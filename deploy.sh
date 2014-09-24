@@ -10,5 +10,9 @@ function create_link {
 }
 
 create_link vimrc
+
 create_link kshrc
 create_link profile
+
+create_link tmux.conf
+create_link tmux-statusline-colors.conf
