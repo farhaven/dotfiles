@@ -1,12 +1,11 @@
 #!/bin/ksh
 
 function create_link {
-	if [ -f "${HOME}/.$1" ]; then
-		echo "${HOME}/.$1 is a regular file"
+	if [ -e "${HOME}/.$1" ]; then
+		echo "${HOME}/.$1 already exists"
 		return 1
 	fi
 
-	rm -f "${HOME}/.$1"
 	ln -s "`pwd`/$1" "${HOME}/.$1"
 }
 
