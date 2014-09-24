@@ -1,7 +1,9 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
 let mapleader=" "
 let g:pathogen_disabled = []
 " call add(g:pathogen_disabled, "vim-airline")
-call add(g:pathogen_disabled, "slimv.vim")
+call add(g:pathogen_disabled, "pycalc")
 execute pathogen#infect()
 
 set nocompatible
@@ -183,14 +185,6 @@ let g:airline_section_z = airline#section#create(['%3p%%'])
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#completions_command = "<C-n>"
-
-"" Syntastic
-let g:syntastic_c_include_dirs = ["/usr/X11R6/include",
-			\ "/usr/local/include",
-			\ "/usr/X11R6/include/freetype2" ]
-let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': [] }
 
 "" tslime
 let g:tslime_ensure_trailing_newlines = 1

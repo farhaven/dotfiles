@@ -10,6 +10,7 @@ function create_link {
 }
 
 create_link vimrc
+create_link vim
 
 create_link kshrc
 create_link profile
