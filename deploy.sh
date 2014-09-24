@@ -15,6 +15,7 @@ create_link vim
 create_link kshrc
 create_link profile
 
+create_link xsession
 create_link status.pl
 
 create_link tmux.conf
