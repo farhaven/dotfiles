@@ -9,6 +9,9 @@ function create_link {
 	ln -s "`pwd`/$1" "${HOME}/.$1"
 }
 
+git submodule init
+git submodule update
+
 create_link vimrc
 create_link vim
 
