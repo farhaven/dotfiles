@@ -4,6 +4,7 @@ let mapleader=" "
 let g:pathogen_disabled = []
 " call add(g:pathogen_disabled, "vim-airline")
 call add(g:pathogen_disabled, "pycalc")
+call add(g:pathogen_disabled, "paredit.vim")
 execute pathogen#infect()
 
 set nocompatible
