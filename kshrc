@@ -75,18 +75,23 @@ function colorcube {
 C_WHITE=$(colorcube 5 5 5)
 function prompt {
 	typeset laststatus=$?
+	typeset branch=$(scm_branch)
+
 	if [ $laststatus -ne 0 ]; then
 		color $(colorcube 3 0 0) $C_WHITE " ◊ $laststatus "
 		color 25 $(colorcube 3 0 0) 
 	fi
 
 	color 25 $C_WHITE " $(hostname -s) "
-	color $(colorcube 3 1 0) 25 
 
-	color $(colorcube 3 1 0) $C_WHITE " $(rtable) "
-	color $(colorcube 0 2 0) $(colorcube 3 1 0) 
+	if [ "`uname`" = "OpenBSD" ]; then
+		color $(colorcube 3 1 0) 25 
+		color $(colorcube 3 1 0) $C_WHITE " $(rtable) "
+		color $(colorcube 0 2 0) $(colorcube 3 1 0) 
+	else
+		color $(colorcube 0 2 0) 25 
+	fi
 
-	typeset branch=$(scm_branch)
 	color $(colorcube 0 2 0) $C_WHITE " $(neatpwd) "
 	if [ -z "$branch" ]; then
 		color 00 $(colorcube 0 2 0) 
