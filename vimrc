@@ -78,23 +78,20 @@ nnoremap <F11> :setlocal spell spelllang=<cr>
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
-augroup autocomplete
-	autocmd!
-	autocmd bufenter * let b:stop_autocomplete=0
-augroup END
+let g:stop_autocomplete=0
 function! BetterComplete(type)
 	if a:type == 'omni'
 		if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
-			let b:stop_autocomplete=1
+			let g:stop_autocomplete=1
 			return "\<TAB>"
 		elseif !pumvisible() && !&omnifunc
 			return "\<C-X>\<C-O>\<C-P>"
 		endif
-	elseif a:type == 'keyword' && !pumvisible() && !b:stop_autocomplete
+	elseif a:type == 'keyword' && !pumvisible() && !g:stop_autocomplete
 		return "\<C-X>\<C-N>\<C-P>"
 	elseif a:type == 'next'
-		if b:stop_autocomplete
-			let b:stop_autocomplete=0
+		if g:stop_autocomplete
+			let g:stop_autocomplete=0
 		else
 			return "\<C-n>"
 		endif
