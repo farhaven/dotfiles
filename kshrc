@@ -166,4 +166,6 @@ set -o emacs
 
 bind ^D=eot
 bind ^Y=beginning-of-line
-stty -ixon -ixoff ixany status ^T
+if [ "`uname`" = "OpenBSD" ]; then
+	stty -ixon -ixoff ixany status ^T
+fi
