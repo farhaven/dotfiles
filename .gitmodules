@@ -58,3 +58,6 @@
 [submodule "vim/bundle/vim-hy"]
 	path = vim/bundle/vim-hy
 	url = git@github.com:farhaven/vim-hy.git
+[submodule "vim/bundle/vim-cute-python"]
+	path = vim/bundle/vim-cute-python
+	url = https://github.com/ehamberg/vim-cute-python.git
