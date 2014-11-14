@@ -5,6 +5,7 @@ let g:pathogen_disabled = []
 " call add(g:pathogen_disabled, "vim-airline")
 call add(g:pathogen_disabled, "pycalc")
 call add(g:pathogen_disabled, "paredit.vim")
+call add(g:pathogen_disabled, "jedi-vim")
 execute pathogen#infect()
 
 set nocompatible
