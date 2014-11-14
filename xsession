@@ -82,7 +82,8 @@ st -c mutt -e mutt &
 # akonaditray &
 # korganizer &
 tkremind &
-tabbed -n surf > /tmp/tabbed.xid &
+# tabbed -n surf > /tmp/tabbed.xid &
+firefox &
 
 statnot &
 wmname LG3D
