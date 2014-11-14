@@ -15,6 +15,8 @@ git submodule update
 create_link vimrc
 create_link vim
 
+create_link exrc
+
 create_link kshrc
 create_link profile
 
