@@ -73,7 +73,7 @@ sub dwm_net {
 	if ($trunk_active eq "iwn0") {
 		open(FH, "ifconfig iwn0|");
 		while (<FH>) {
-			if (m/nwid ([a-zA-Z0-9 "!-\._]+) chan/) {
+			if (m/nwid ([`a-zA-Z0-9 "!-\._]+) chan/) {
 				$trunk_active = $1;
 				$trunk_active =~ s/^"//g;
 				$trunk_active =~ s/"$//g;
