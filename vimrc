@@ -15,11 +15,14 @@ filetype indent on
 
 syntax on
 set wildmenu
+
 set incsearch
+set ignorecase
+set smartcase
 
 " set foldmethod=indent
 " set foldmethod=syntax
-" set foldlevelstart=0
+set foldlevelstart=2
 
 set hidden
 set enc=UTF-8
@@ -67,8 +70,6 @@ nnoremap <F2> :w<cr>:Dispatch<cr>
 nnoremap <F3> :w<cr>:!exctags -R --sort=yes --fields=+iaS --extra=+q .<cr>
 nnoremap <F5> :cprevious<cr>
 nnoremap <F6> :cnext<cr>
-
-nnoremap ; :
 
 nnoremap Q <nop>
 nnoremap q <nop>
@@ -202,17 +203,3 @@ map <Leader>p :python pycalc()<CR>
 "" SemanticHighlight
 let g:semanticTermColors = [1,2,3,5,6,25,9,10,12,13,14,65,72,125,131,203]
 nnoremap <Leader>s :SemanticHighlightToggle<cr>
-
-"" IBV 2013
-nmap ;l :call ListTrans_toggle_format()<CR>
-vmap ;l :call ListTrans_toggle_format('visual')<CR>
-
-vmap ++ :call VMATH_Analyse()<CR>
-nmap ++ vip++
-
-vmap <expr> <LEFT>  DVB_Drag('left')
-vmap <expr> <RIGHT> DVB_Drag('right')
-vmap <expr> <UP>    DVB_Drag('up')
-vmap <expr> <DOWN>  DVB_Drag('down')
-vmap <expr> D       DVB_Duplicate()
-
