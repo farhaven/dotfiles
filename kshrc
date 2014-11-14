@@ -74,6 +74,11 @@ function colorcube {
 }
 C_WHITE=$(colorcube 5 5 5)
 function prompt {
+	if ! echo $TERM | grep -q 256color; then
+		echo "$(neatpwd)"
+		return
+	fi
+
 	typeset laststatus=$?
 	typeset branch=$(scm_branch)
 
@@ -97,13 +102,12 @@ function prompt {
 		color 00 $(colorcube 0 2 0) 
 	else
 		color $(colorcube 3 0 0) $(colorcube 0 2 0) 
-		color $(colorcube 3 0 0) $C_WHITE "  $branch"
+		color $(colorcube 3 0 0) $C_WHITE "  $branch "
 		color 00 $(colorcube 3 0 0) 
 	fi
 }
 PS1='$(prompt)
 $(color 00 $(colorcube 1 1 2) "$") '
-PS2=' '
 # }}}
 
 # aliases {{{
