@@ -135,6 +135,9 @@ PATH=${PATH}:/usr/games
 PATH=${PATH}:/usr/local/jdk-1.7.0/bin
 export PATH
 
+GOPATH=${HOME}/sourcecode/go
+export GOPATH
+
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
 export BROWSER=$HOME/bin/mimehandler
 if [ "$TERM" != "vt100" ]; then
