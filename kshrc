@@ -141,8 +141,8 @@ export GOPATH
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
 export BROWSER=$HOME/bin/mimehandler
 if [ "$TERM" != "vt100" ]; then
-	# export EDITOR="vim"
-	export EDITOR="/usr/bin/vi"
+	export EDITOR="vim"
+	# export EDITOR="/usr/bin/vi"
 else
 	export EDITOR="ex"
 fi
