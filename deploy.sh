@@ -1,12 +1,15 @@
 #!/bin/ksh
 
 function create_link {
-	if [ -e "${HOME}/.$1" ]; then
-		echo "${HOME}/.$1 already exists"
+	typeset target="${HOME}/.$1"
+
+	if [ -e "$target" ]; then
+		echo "$target already exists" 1>&2
 		return 1
 	fi
 
-	ln -s "`pwd`/$1" "${HOME}/.$1"
+	echo "$target linked" 1>&2
+	ln -s "`pwd`/$1" "$target"
 }
 
 git submodule init
