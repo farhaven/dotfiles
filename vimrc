@@ -183,11 +183,10 @@ let g:airline_section_z = airline#section#create(['%3p%%'])
 " let g:airline_theme = "wombat"
 " let g:airline_theme = "jellybeans"
 " let g:airline_theme = "bubblegum"
-
-"" Jedi-Vim -- Python autocompletion
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#completions_command = "<C-n>"
+let g:airline_theme = "powerlineish"
+" let g:airline_theme = "serene"
+" let g:airline_theme = "sol"
+" let g:airline_theme = "understated"
 
 "" tslime
 let g:tslime_ensure_trailing_newlines = 1
