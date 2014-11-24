@@ -70,3 +70,6 @@
 [submodule "vim/bundle/vim-etherpad"]
 	path = vim/bundle/vim-etherpad
 	url = https://github.com/guyzmo/vim-etherpad.git
+[submodule "vim/bundle/vim-monochrome"]
+	path = vim/bundle/vim-monochrome
+	url = https://github.com/fxn/vim-monochrome.git

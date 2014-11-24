@@ -54,19 +54,7 @@ set iskeyword+=-
 set mouse=rn
 
 set background=light
-colorscheme default
-
-highlight Conceal ctermfg=88 ctermbg=188
-highlight SpecialKey ctermfg=103 ctermbg=231
-highlight Statement NONE
-highlight Identifier NONE
-highlight Type NONE
-highlight Preproc NONE
-highlight Special NONE
-highlight String ctermfg=1
-highlight Constant NONE
-highlight MoreMsg NONE
-highlight! link LineNr SpecialKey
+colorscheme old
 
 map j gj
 map k gk
