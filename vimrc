@@ -77,7 +77,6 @@ nnoremap <F9> :setlocal spell spelllang=de<cr>
 nnoremap <F10> :setlocal spell spelllang=en_us<cr>
 nnoremap <F11> :setlocal spell spelllang=<cr>
 
-" exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 exec "set listchars=tab:>-,trail:\uB7,nbsp:~"
 set list
 
@@ -103,8 +102,6 @@ function! BetterComplete(type)
 endfunction
 set completeopt=menuone,menu,longest,preview
 set complete=.,w,b,u,t,i ",kspell
-" inoremap <expr> <C-n> pumvisible() ? "\<C-n>" 
-" 			\: &omnifunc != "" ? "\<C-x>\<C-o>" : "\<C-n>"
 set omnifunc=syntaxcomplete#Complete
 inoremap <silent><TAB> <C-R>=BetterComplete('omni')<CR><C-R>=BetterComplete('keyword')<CR><C-R>=BetterComplete('next')<CR>
 
@@ -144,10 +141,8 @@ execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
 
 augroup ocaml
 	autocmd!
-	" autocmd FileType ocaml source /usr/local/share/vim/vimfiles/indent/ocaml.vim
 	autocmd FileType ocaml set expandtab
 augroup END
-
 
 "" VimWiki
 let g:vimwiki_hl_headers=1
@@ -193,9 +188,6 @@ let g:tslime_ensure_trailing_newlines = 1
 
 "" Vimux
 map <Leader>vp :VimuxPromptCommand<CR>
-
-"" Pycalc
-map <Leader>p :python pycalc()<CR>
 
 "" SemanticHighlight
 let g:semanticTermColors = [1,2,3,5,6,25,9,10,12,13,14,65,72,125,131,203]
