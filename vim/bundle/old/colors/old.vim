@@ -9,6 +9,7 @@ hi  Preproc    NONE
 hi  Special    NONE
 hi  String     ctermfg=1
 hi  Constant   NONE
+hi  Title      NONE
 hi  MoreMsg    NONE
 hi  LineNr     NONE
 
