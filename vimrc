@@ -188,7 +188,3 @@ let g:tslime_ensure_trailing_newlines = 1
 
 "" Vimux
 map <Leader>vp :VimuxPromptCommand<CR>
-
-"" SemanticHighlight
-let g:semanticTermColors = [1,2,3,5,6,25,9,10,12,13,14,65,72,125,131,203]
-nnoremap <Leader>s :SemanticHighlightToggle<cr>
