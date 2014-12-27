@@ -27,7 +27,7 @@ set foldlevelstart=2
 set hidden
 set enc=UTF-8
 
-set colorcolumn=81
+set colorcolumn=133
 set number
 set laststatus=2
 set noequalalways
@@ -117,6 +117,8 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread ~/work/** setlocal et
 	autocmd bufenter,bufread ~/work/** setlocal ts=2
 	autocmd bufenter,bufread ~/work/** setlocal sw=2
+	autocmd FileType python setlocal ts=4
+	autocmd FileType python setlocal sw=4
 
 	autocmd bufenter,bufread *Makefile* setlocal noet
 
@@ -183,8 +185,13 @@ let g:airline_theme = "powerlineish"
 " let g:airline_theme = "sol"
 " let g:airline_theme = "understated"
 
-"" tslime
-let g:tslime_ensure_trailing_newlines = 1
+"" Slimux
+let g:slimux_select_from_current_window=1
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
 
 "" Vimux
 map <Leader>vp :VimuxPromptCommand<CR>
+
+"" Fugitive
+map <Leader>g :Gstatus<CR>

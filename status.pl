@@ -3,6 +3,25 @@
 use strict;
 use POSIX qw(strftime);
 
+sub dwm_mpd {
+	my @info;
+	open(FH, "mpc|");
+	while(<FH>) {
+		push @info, $_;
+	}
+	close(FH);
+	if (scalar(@info) lt 3) {
+		return "";
+	}
+	my $title = substr($info[0], 0, 40);
+	my @state = split(' ', $info[1]);
+	chomp($title);
+	if ($state[0] eq "[playing]") {
+		return $title . " " . $state[3] . "  ";
+	}
+	return $state[0] . " " . $title . " " . $state[3] . "  ";
+}
+
 sub dwm_apm { # {{{
 	my $charge = int(qx(apm -l));
 	my $ac = int(qx(apm -a));
@@ -45,9 +64,9 @@ sub addrfam_available {
 	my $fams = "";
 
 	foreach my $f (("inet6", "inet")) {
-		open(FH, "route -n get -$f default 2>&1|");
+		open(FH, "route -n show -$f 2>&1|");
 		while (<FH>) {
-			if (m/^[[:space:]]+interface: /) {
+			if (m/^default/) {
 				$fams .= "4" if ($f eq "inet");
 				$fams .= "6" if ($f eq "inet6");
 				last;
@@ -119,6 +138,7 @@ if ($#ARGV == 0) {
 print $dbus_notification;
 # }}}
 
+print dwm_mpd();
 print dwm_apm();
 print dwm_net();
 print dwm_date();

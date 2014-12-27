@@ -50,9 +50,11 @@ xset dpms 120 180 240
 xinput --set-prop Touchpad0 "Synaptics Palm Detection" 1
 xinput --set-prop Touchpad0 "Synaptics Two-Finger Scrolling" 0 0
 
-# syndaemon -i 0.75 -Rd
-# synclient TapButton1=1 TapButton2=2 TapButton3=3 VertEdgeScroll=1 VertScrollDelta=45 HorizEdgeScroll=0 PalmMinZ=10
-synclient TouchpadOff=1
+syndaemon -i 0.75 -Rd
+synclient TapButton1=1 RTCornerButton=2 RBCornerButton=3 RTCornerButton=2
+synclient TapButton2=3 TapButton3=0 VertEdgeScroll=1 VertScrollDelta=45
+synclient HorizEdgeScroll=0 PalmMinWidth=7 PalmMinZ=40
+# synclient TouchpadOff=1
 
 xrdb -load ~/.Xdefaults
 setxkbmap us intl-unicode

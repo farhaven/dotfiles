@@ -129,14 +129,15 @@ export HISTFILE=~/.history
 # }}}
 
 # env vars {{{
+GOPATH=${HOME}/sourcecode/go
+export GOPATH
+
 PATH=${HOME}/bin:${PATH}
 PATH=${PATH}:/usr/local/games
 PATH=${PATH}:/usr/games
 PATH=${PATH}:/usr/local/jdk-1.7.0/bin
+PATH=${PATH}:${GOPATH}/bin
 export PATH
-
-GOPATH=${HOME}/sourcecode/go
-export GOPATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
 export BROWSER=$HOME/bin/mimehandler
@@ -152,8 +153,6 @@ export LC_CTYPE=en_US.UTF-8
 export LC_MESSAGES=$LC_CTYPE
 
 export DOOMWADDIR=~/doom/iwads
-
-export GTK2_RC_FILES="/home/gregor/.gtkrc.mine"
 
 export GROFF_TMAC_PATH=~/.groff/tmac
 export GROFF_FONT_PATH=~/.groff/fonts
