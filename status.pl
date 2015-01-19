@@ -19,7 +19,8 @@ sub dwm_mpd {
 	if ($state[0] eq "[playing]") {
 		return $title . " " . $state[3] . "  ";
 	}
-	return $state[0] . " " . $title . " " . $state[3] . "  ";
+	# return $state[0] . " " . $title . " " . $state[3] . "  ";
+	return "";
 }
 
 sub dwm_apm { # {{{
