@@ -4,6 +4,8 @@ use strict;
 use POSIX qw(strftime);
 
 sub dwm_mpd {
+	my $artist = qx(mpc -qf "%artist%" current);
+	my $title  = qx(mpc -qf "%title%" current);
 	my @info;
 	open(FH, "mpc|");
 	while(<FH>) {
@@ -13,11 +15,14 @@ sub dwm_mpd {
 	if (scalar(@info) lt 3) {
 		return "";
 	}
-	my $title = substr($info[0], 0, 40);
+	my $artist = substr($artist, 0, 30);
+	$artist =~ s/[\t\n]//g;
+	my $title = substr($title, 0, 35);
+	$title =~ s/[\t\n]//g;
 	my @state = split(' ', $info[1]);
 	chomp($title);
 	if ($state[0] eq "[playing]") {
-		return $title . " " . $state[3] . "  ";
+		return $artist . " - " . $title . " " . $state[3] . "  ";
 	}
 	# return $state[0] . " " . $title . " " . $state[3] . "  ";
 	return "";

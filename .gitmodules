@@ -76,3 +76,6 @@
 [submodule "vim/bundle/slimux"]
 	path = vim/bundle/slimux
 	url = https://github.com/epeli/slimux
+[submodule "vim/bundle/wildfire.vim"]
+	path = vim/bundle/wildfire.vim
+	url = https://github.com/gcmt/wildfire.vim.git
