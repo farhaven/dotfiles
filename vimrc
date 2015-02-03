@@ -20,7 +20,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-" set foldmethod=indent
+set foldmethod=indent
 " set foldmethod=syntax
 set foldlevelstart=2
 
