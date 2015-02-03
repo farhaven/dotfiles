@@ -147,6 +147,9 @@ augroup ocaml
 augroup END
 
 "" VimWiki
+let g:vimwiki_list = [{'path': '~/vimwiki',
+                     \ 'syntax': 'markdown',
+                     \ 'ext': '.md'}]
 let g:vimwiki_hl_headers=1
 let g:vimwiki_folding='expr'
 function! VimwikiLinkHandler(link)
