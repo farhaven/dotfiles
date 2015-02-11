@@ -82,6 +82,3 @@
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/bundle/vimoutliner"]
-	path = vim/bundle/vimoutliner
-	url = https://github.com/vimoutliner/vimoutliner.git
