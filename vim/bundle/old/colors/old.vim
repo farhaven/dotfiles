@@ -14,3 +14,6 @@ hi  MoreMsg    NONE
 hi  LineNr     NONE
 
 hi! link LineNr SpecialKey
+
+" GitGutter
+hi clear SignColumn
