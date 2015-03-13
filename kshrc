@@ -162,6 +162,8 @@ export AUTOCONF_VERSION=2.69
 
 export AUTOSSH_LOGLEVEL=0
 
+export MTR_OPTIONS="-zbe"
+
 if which opam 2>/dev/null >/dev/null; then
 	eval `opam config env`
 fi
