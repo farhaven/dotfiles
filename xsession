@@ -34,6 +34,8 @@ fetchmail &
 
 # nice -n 20 bitcoind -dns -irc -upnp -daemon
 
+hy ~/sourcecode/stats/stats.hy &
+
 redshift-gtk &
 xsettingsd &
 for d in /usr/local/lib/X11/fonts/*; do
