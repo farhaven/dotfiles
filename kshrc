@@ -112,7 +112,7 @@ $(color 00 $(colorcube 1 1 2) "$") '
 
 # aliases {{{
 RSYNC_COMMON='rsync -hPr'
-alias rm='rm -rf'
+# alias rm='rm -rf'
 alias cp=$RSYNC_COMMON
 alias xmv="$RSYNC_COMMON --remove-source-files --delete-delay"
 alias rsync=$RSYNC_COMMON
