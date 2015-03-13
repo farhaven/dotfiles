@@ -27,7 +27,8 @@ set foldlevelstart=2
 set hidden
 set enc=UTF-8
 
-set colorcolumn=133
+set textwidth=132
+set colorcolumn=+1
 set number
 set laststatus=2
 set noequalalways
