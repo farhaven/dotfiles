@@ -62,7 +62,7 @@ xhost +localhost
 # xidle -program "/usr/X11R6/bin/xlock -mode random" -timeout 300 &
 xscreensaver &
 # xcompmgr -n &
-# compton -f -i 0.8 -b
+compton --vsync opengl --unredir-if-possible --backend glx --glx-no-stencil --glx-swap-method buffer-age --glx-no-rebind-pixmap -b
 
 if [ $(xrandr | grep connected | wc -l) == 2 ]; then
 	xrandr --output VGA1 --auto
