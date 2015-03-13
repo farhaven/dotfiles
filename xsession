@@ -19,10 +19,10 @@ while true; do
 	sleep 5
 done &
 
-while true; do
-	fetch-remote-maildir
-	sleep $((60 * 10))
-done &
+# while true; do
+	# fetch-remote-maildir
+	# sleep $((60 * 10))
+# done &
 
 # change the desktop wallpaper every two hours
 while true; do
@@ -78,8 +78,6 @@ done &
 
 st -c mutt -e mutt &
 
-# akonaditray &
-# korganizer &
 tkremind &
 # tabbed -n surf > /tmp/tabbed.xid &
 firefox &
