@@ -11,9 +11,6 @@ export WEBKIT_IGNORE_SSL_ERRORS="1"
 
 eval $(gpg-agent -s --daemon --pinentry-program `which pinentry-gtk-2`)
 
-# eval $(ssh-agent -s)
-# ssh-add </dev/null
-
 env | grep ^SSH > /tmp/ssh-agent
 
 # set up SSH tunnel to university's mailserver
