@@ -106,8 +106,23 @@ function prompt {
 		color 00 $(colorcube 3 0 0) 
 	fi
 }
+function userchar {
+	typeset chr="#"
+
+	if [ $USER != "root" ]; then
+		chr="$"
+	fi
+
+	if ! echo TERM | grep -q 256color; then
+		echo $chr
+		return
+	fi
+
+	echo "$(color 00 $(colorcube 1 1 2) $chr)"
+}
+
 PS1='$(prompt)
-$(color 00 $(colorcube 1 1 2) "$") '
+$(color 00 $(colorcube 1 1 2) "$(userchar)") '
 # }}}
 
 # aliases {{{
