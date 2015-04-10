@@ -131,7 +131,6 @@ RSYNC_COMMON='rsync -hPr'
 alias cp=$RSYNC_COMMON
 alias xmv="$RSYNC_COMMON --remove-source-files --delete-delay"
 alias rsync=$RSYNC_COMMON
-alias less='less -R'
 alias ..='cd ..'
 alias ls='ls -F'
 alias sudo='sudo -E'
@@ -182,6 +181,8 @@ export MTR_OPTIONS="-zbe"
 if which opam 2>/dev/null >/dev/null; then
 	eval `opam config env`
 fi
+
+export LESS='-RIMSN'
 # }}}
 
 # shell options {{{
