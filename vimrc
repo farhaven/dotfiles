@@ -73,6 +73,10 @@ nnoremap <F6> :cnext<cr>
 nnoremap Q <nop>
 nnoremap q <nop>
 
+nnoremap <F1> <Esc>
+inoremap <F1> <Esc>
+vnoremap <F1> <Esc>
+
 set spell spelllang=
 nnoremap <F9> :setlocal spell spelllang=de<cr>
 nnoremap <F10> :setlocal spell spelllang=en_us<cr>
