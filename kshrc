@@ -49,6 +49,12 @@ function neatpwd {
 function rtable {
 	ps axo rtable,pid | grep " $$\$" | sed -Ee 's/ +//' -e 's/ .*//'
 }
+function python_venv {
+	if [ -z $VIRTUAL_ENV ]; then
+		return
+	fi
+	echo -n $(basename "$VIRTUAL_ENV")
+}
 function color {
 	if [ "$TERM" == "vt100" ]; then
 		shift 2
@@ -67,45 +73,99 @@ function color {
 	shift 2
 	echo -n "$@[00m"
 }
-function colorcube {
+function rgb {
 	# Map XTerm color cube coordinates to terminal color value
 	# http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
 	echo -n $((($1 * 36) + ($2 * 6) + $3 + 16))
 }
-C_WHITE=$(colorcube 5 5 5)
+C_WHITE=$(rgb 5 5 5)
+function airline {
+	typeset oldifs=$IFS
+	IFS="
+"
+	typeset cprev=
+	typeset orignum=$#
+	while [ $# -gt 0 ]; do
+		typeset num=$(($orignum - $#))
+		typeset cnow=$1
+		typeset txt=$(echo "$2" | sed -Ee 's/^[[:blank:]]+//' -e 's/[[:blank:]]+$//')
+		if [ $num -gt 0 ]; then
+			color $cnow $cprev 
+		fi
+
+		if [ "x$txt" != "x" ]; then
+			color $cnow $C_WHITE " $txt "
+		fi
+
+		if [ $# -lt 3 ]; then
+			color $C_WHITE $cnow 
+			IFS=$oldifs
+			return
+		fi
+
+		cprev=$cnow
+		shift 2
+	done
+}
+
 function prompt {
+	typeset laststatus=$?
 	if ! echo $TERM | grep -q 256color; then
 		echo "$(neatpwd)"
 		return
 	fi
 
-	typeset laststatus=$?
 	typeset branch=$(scm_branch)
+	typeset venv=$(python_venv)
 
+	oldifs=$IFS
+	IFS="
+"
+
+	set -A elems
 	if [ $laststatus -ne 0 ]; then
-		color $(colorcube 3 0 0) $C_WHITE " ◊ $laststatus "
-		color 25 $(colorcube 3 0 0) 
+		elems[${#elems[*]}]=$(rgb 3 0 0)
+		elems[${#elems[*]}]="◊ $laststatus"
+		elems[${#elems[*]}]=$(rgb 4 0 0)
+		elems[${#elems[*]}]=" "
 	fi
 
-	color 25 $C_WHITE " $(hostname -s) "
+	elems[${#elems[*]}]=$(rgb 0 1 3)
+	elems[${#elems[*]}]="$(hostname -s)"
+	elems[${#elems[*]}]=$(rgb 0 2 4)
+	elems[${#elems[*]}]=" "
 
-	if [ "`uname`" = "OpenBSD" ]; then
-		color $(colorcube 3 1 0) 25 
-		color $(colorcube 3 1 0) $C_WHITE " $(rtable) "
-		color $(colorcube 0 2 0) $(colorcube 3 1 0) 
-	else
-		color $(colorcube 0 2 0) 25 
+	if [ "`uname`" = "OpenBSD" ] || [ ! -z $venv ]; then
+		elems[${#elems[*]}]=$(rgb 3 1 0)
+		typeset s
+		if [ "`uname`" = "OpenBSD" ]; then
+			s="$(rtable)"
+			if [ ! -z $venv ]; then
+				s="$s $venv"
+			fi
+		elif [ ! -z $venv ]; then
+			s="$venv"
+		fi
+		elems[${#elems[*]}]="$s"
+		elems[${#elems[*]}]=$(rgb 4 2 0)
+		elems[${#elems[*]}]=" "
 	fi
 
-	color $(colorcube 0 2 0) $C_WHITE " $(neatpwd) "
-	if [ -z "$branch" ]; then
-		color 00 $(colorcube 0 2 0) 
-	else
-		color $(colorcube 3 0 0) $(colorcube 0 2 0) 
-		color $(colorcube 3 0 0) $C_WHITE "  $branch "
-		color 00 $(colorcube 3 0 0) 
+	elems[${#elems[*]}]=$(rgb 0 2 0)
+	elems[${#elems[*]}]="$(neatpwd)"
+	elems[${#elems[*]}]=$(rgb 0 3 0)
+	elems[${#elems[*]}]=" "
+
+	if [ ! -z "$branch" ]; then
+		elems[${#elems[*]}]=$(rgb 3 0 0)
+		elems[${#elems[*]}]=" $branch"
+		elems[${#elems[*]}]=$(rgb 4 0 0)
 	fi
+
+	airline ${elems[*]}
+	IFS=$oldifs
 }
+
 function userchar {
 	typeset chr="#"
 
@@ -118,11 +178,11 @@ function userchar {
 		return
 	fi
 
-	echo "$(color 00 $(colorcube 1 1 2) $chr)"
+	echo "$(color 00 $(rgb 1 1 2) $chr)"
 }
 
 PS1='$(prompt)
-$(color 00 $(colorcube 1 1 2) "$(userchar)") '
+$(color 00 $(rgb 1 1 2) "$(userchar)") '
 # }}}
 
 # aliases {{{
