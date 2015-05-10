@@ -38,8 +38,8 @@ setxkbmap us intl-unicode
 xmodmap ~/.xmodmap
 xhost +localhost
 xscreensaver &
-# xcompmgr -n &
-compton --vsync opengl --unredir-if-possible --backend glx --glx-no-stencil --glx-swap-method buffer-age --glx-no-rebind-pixmap -b
+compton -b
+dunst -follow keyboard -geometry 0x5-0 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
 
 if [ $(xrandr | grep connected | wc -l) == 2 ]; then
 	xrandr --output VGA1 --auto
@@ -49,7 +49,7 @@ fi
 
 while sleep 1; do
 	( echo "\tGregor Best\n--\n";
-	fortune -s) > ~/.signature
+	fortune -sa) > ~/.signature
 done &
 
 st -c mutt -e mutt &
@@ -57,9 +57,15 @@ st -c mutt -e mutt &
 tkremind &
 firefox &
 
-statnot &
+# statnot &
 wmname LG3D
 while true; do
+	xsetroot -name "`status`"
+	sleep 5
+done &
+
+while true; do
 	dwm
+	# awesome
 	sleep 1
 done
