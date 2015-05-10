@@ -23,6 +23,7 @@ set smartcase
 set foldmethod=indent
 " set foldmethod=syntax
 set foldlevelstart=2
+set foldminlines=1
 
 set hidden
 set enc=UTF-8
