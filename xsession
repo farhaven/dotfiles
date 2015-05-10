@@ -13,17 +13,6 @@ eval $(gpg-agent -s --daemon --pinentry-program `which pinentry-gtk-2`)
 
 env | grep ^SSH > /tmp/ssh-agent
 
-# set up SSH tunnel to university's mailserver
-while true; do
-	(ping -c1 -w1 unobtanium.de && ssh -fNL 2525:mail.upb.de:25 unobtanium.de) >/dev/null 2>&1
-	sleep 5
-done &
-
-# while true; do
-	# fetch-remote-maildir
-	# sleep $((60 * 10))
-# done &
-
 # change the desktop wallpaper every two hours
 while true; do
 	bdselect
@@ -31,8 +20,6 @@ while true; do
 done &
 
 fetchmail &
-
-# nice -n 20 bitcoind -dns -irc -upnp -daemon
 
 hy ~/sourcecode/stats/stats.hy &
 
@@ -46,20 +33,10 @@ xset fp rehash
 xset r rate 240 20
 xset dpms 120 180 240
 
-xinput --set-prop Touchpad0 "Synaptics Palm Detection" 1
-xinput --set-prop Touchpad0 "Synaptics Two-Finger Scrolling" 0 0
-
-syndaemon -i 0.75 -Rd
-synclient TapButton1=1 RTCornerButton=2 RBCornerButton=3 RTCornerButton=2
-synclient TapButton2=3 TapButton3=0 VertEdgeScroll=1 VertScrollDelta=45
-synclient HorizEdgeScroll=0 PalmMinWidth=7 PalmMinZ=40
-# synclient TouchpadOff=1
-
 xrdb -load ~/.Xdefaults
 setxkbmap us intl-unicode
 xmodmap ~/.xmodmap
 xhost +localhost
-# xidle -program "/usr/X11R6/bin/xlock -mode random" -timeout 300 &
 xscreensaver &
 # xcompmgr -n &
 compton --vsync opengl --unredir-if-possible --backend glx --glx-no-stencil --glx-swap-method buffer-age --glx-no-rebind-pixmap -b
@@ -70,9 +47,6 @@ if [ $(xrandr | grep connected | wc -l) == 2 ]; then
 	xrandr --output VGA1 --right-of LVDS1
 fi
 
-# real display DPI is 128, but that's just too big
-xrandr --dpi 96
-
 while sleep 1; do
 	( echo "\tGregor Best\n--\n";
 	fortune -s) > ~/.signature
@@ -81,7 +55,6 @@ done &
 st -c mutt -e mutt &
 
 tkremind &
-# tabbed -n surf > /tmp/tabbed.xid &
 firefox &
 
 statnot &
