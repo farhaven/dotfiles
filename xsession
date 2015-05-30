@@ -21,7 +21,7 @@ done &
 
 fetchmail &
 
-hy ~/sourcecode/stats/stats.hy &
+hy ~/sourcecode/stats/timestamps.hy &
 
 redshift-gtk &
 xsettingsd &
@@ -39,7 +39,7 @@ xmodmap ~/.xmodmap
 xhost +localhost
 xscreensaver &
 compton -b
-dunst -follow keyboard -geometry 0x5-0 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
+dunst -follow keyboard -geometry 0x5-0+14 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
 
 if [ $(xrandr | grep connected | wc -l) == 2 ]; then
 	xrandr --output VGA1 --auto
@@ -57,7 +57,6 @@ st -c mutt -e mutt &
 tkremind &
 firefox &
 
-# statnot &
 wmname LG3D
 while true; do
 	xsetroot -name "`status`"
@@ -66,6 +65,5 @@ done &
 
 while true; do
 	dwm
-	# awesome
 	sleep 1
 done
