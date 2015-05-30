@@ -135,19 +135,17 @@ function prompt {
 	elems[${#elems[*]}]=$(rgb 0 2 4)
 	elems[${#elems[*]}]=" "
 
-	if [ "`uname`" = "OpenBSD" ] || [ ! -z $venv ]; then
+	if [ "`uname`" = "OpenBSD" ]; then
 		elems[${#elems[*]}]=$(rgb 3 1 0)
-		typeset s
-		if [ "`uname`" = "OpenBSD" ]; then
-			s="$(rtable)"
-			if [ ! -z $venv ]; then
-				s="$s $venv"
-			fi
-		elif [ ! -z $venv ]; then
-			s="$venv"
-		fi
-		elems[${#elems[*]}]="$s"
+		elems[${#elems[*]}]="$(rtable)"
 		elems[${#elems[*]}]=$(rgb 4 2 0)
+		elems[${#elems[*]}]=" "
+	fi
+
+	if [ ! -z $venv ]; then
+		elems[${#elems[*]}]=$(rgb 1 1 1)
+		elems[${#elems[*]}]="$venv"
+		elems[${#elems[*]}]=$(rgb 2 2 2)
 		elems[${#elems[*]}]=" "
 	fi
 
@@ -160,6 +158,7 @@ function prompt {
 		elems[${#elems[*]}]=$(rgb 3 0 0)
 		elems[${#elems[*]}]=" $branch"
 		elems[${#elems[*]}]=$(rgb 4 0 0)
+		elems[${#elems[*]}]=" "
 	fi
 
 	airline ${elems[*]}
@@ -243,6 +242,8 @@ if which opam 2>/dev/null >/dev/null; then
 fi
 
 export LESS='-RIMSN'
+
+export PYTHONPATH=~/sourcecode/HyREPL
 # }}}
 
 # shell options {{{
