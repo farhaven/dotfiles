@@ -205,6 +205,7 @@ export HISTFILE=~/.history
 GOPATH=${HOME}/sourcecode/go
 export GOPATH
 
+PATH=${HOME}/maven/bin:${PATH}
 PATH=${HOME}/bin:${PATH}
 PATH=${PATH}:/usr/local/games
 PATH=${PATH}:/usr/games
@@ -244,6 +245,8 @@ fi
 export LESS='-RIMSN'
 
 export PYTHONPATH=~/sourcecode/HyREPL
+export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
+export MAVEN_OPTS='-Xmx1048m -XX:MaxPermSize=512m'
 # }}}
 
 # shell options {{{
