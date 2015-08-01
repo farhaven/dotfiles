@@ -1,4 +1,4 @@
-#!/usr/local/bin/mksh
+#!/bin/ksh
 [ -z "$PS1" ] && return
 
 # prompt {{{

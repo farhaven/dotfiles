@@ -57,7 +57,7 @@
 	url = https://github.com/michaeljsmith/vim-indent-object.git
 [submodule "vim/bundle/vim-hy"]
 	path = vim/bundle/vim-hy
-	url = git@github.com:farhaven/vim-hy.git
+	url = git@github.com:hylang/vim-hy.git
 [submodule "vim/bundle/vim-cute-python"]
 	path = vim/bundle/vim-cute-python
 	url = https://github.com/ehamberg/vim-cute-python.git
@@ -82,3 +82,9 @@
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/bundle/vim-rfc"]
+	path = vim/bundle/vim-rfc
+	url = git@github.com:mhinz/vim-rfc.git
+[submodule "vim/bundle/vim-kerboscript"]
+	path = vim/bundle/vim-kerboscript
+	url = git://github.com/tomvanderlee/vim-kerboscript.git
