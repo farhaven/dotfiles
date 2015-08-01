@@ -191,7 +191,11 @@ alias cp=$RSYNC_COMMON
 alias xmv="$RSYNC_COMMON --remove-source-files --delete-delay"
 alias rsync=$RSYNC_COMMON
 alias ..='cd ..'
-alias ls='ls -F'
+if [ "`uname`" = "OpenBSD" ]; then
+	alias ls='colorls -GF'
+else
+	alias ls='ls -F'
+fi
 alias sudo='sudo -E'
 alias m=mimehandler
 # }}}
