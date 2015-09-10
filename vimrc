@@ -180,17 +180,13 @@ let g:clojure_align_multiline_strings = 1
 "" Airline
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#syntastic#enabled = 1
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 " Simpler position view
 let g:airline_section_z = airline#section#create(['%3p%%'])
-" let g:airline_theme = "base16"
-" let g:airline_theme = "wombat"
-" let g:airline_theme = "jellybeans"
-" let g:airline_theme = "bubblegum"
 let g:airline_theme = "powerlineish"
-" let g:airline_theme = "serene"
-" let g:airline_theme = "sol"
-" let g:airline_theme = "understated"
+
+"" Tmuxline
+let g:tmuxline_powerline_separators = 0
 
 "" Slimux
 let g:slimux_select_from_current_window=1
