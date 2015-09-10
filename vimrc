@@ -180,7 +180,7 @@ let g:clojure_align_multiline_strings = 1
 "" Airline
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#syntastic#enabled = 1
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 " Simpler position view
 let g:airline_section_z = airline#section#create(['%3p%%'])
 " let g:airline_theme = "base16"
