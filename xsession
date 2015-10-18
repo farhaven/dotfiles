@@ -5,10 +5,6 @@ export ENV=~/.kshrc
 
 [ -e $ENV ] && . $ENV
 
-export LC_CTYPE=en_US.UTF-8
-export LC_MESSAGES=$LC_CTYPE
-export WEBKIT_IGNORE_SSL_ERRORS="1"
-
 eval $(gpg-agent -s --daemon --pinentry-program `which pinentry-gtk-2`)
 
 env | grep ^SSH > /tmp/ssh-agent
@@ -19,11 +15,8 @@ while true; do
 	sleep $((60 * 120))
 done &
 
-fetchmail &
-
 hy ~/sourcecode/stats/timestamps.hy &
 
-redshift-gtk &
 xsettingsd &
 for d in /usr/local/lib/X11/fonts/*; do
 	xset +fp $d
@@ -37,33 +30,35 @@ xrdb -load ~/.Xdefaults
 setxkbmap us intl-unicode
 xmodmap ~/.xmodmap
 xhost +localhost
+
+# stalonetray --geometry 1x1-0-0 --grow-gravity W &
 xscreensaver &
 compton -b
-dunst -follow keyboard -geometry 0x5-0+14 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
-
-if [ $(xrandr | grep connected | wc -l) == 2 ]; then
-	xrandr --output VGA1 --auto
-	xrandr --output LVDS1 --auto
-	xrandr --output VGA1 --right-of LVDS1
-fi
+dunst -follow keyboard -geometry 0x5-0+0 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
+redshift-gtk &
+# (while sleep 5; do status; done | dzen2 -p -ta r -e 'onstart=lower' -fn "PragmataPro for Powerline:size=9") &
+(while sleep 5; do xsetroot -name "`status`"; done) &
 
 while sleep 1; do
-	( echo "\tGregor Best\n--\n";
+	( echo "\tGregor\n--\n";
 	fortune -sa) > ~/.signature
 done &
 
 st -c mutt -e mutt &
 
 tkremind &
-firefox &
+# firefox &
+chrome &
 
 wmname LG3D
-while true; do
-	xsetroot -name "`status`"
-	sleep 5
-done &
 
 while true; do
-	dwm
+	if [ -O /tmp/wm.gbe ]; then
+		`cat /tmp/wm.gbe`
+	else
+		dwm
+	fi
+	# twm-tweaked
+	# fvwm
 	sleep 1
 done
