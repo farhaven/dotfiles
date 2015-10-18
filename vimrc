@@ -49,13 +49,14 @@ set ttimeoutlen=50
 set lazyredraw
 set ttyfast
 
-" helps in Clojure
-set iskeyword+=-
-
 " set mouse=a
 set mouse=rn
 
-set background=light
+set background=dark
+set guifont=PragmataPro\ for\ Powerline\ 10
+set guioptions-=mTr
+set guioptions+=c
+set guicursor=a:blinkon0
 colorscheme old
 
 map j gj
@@ -78,7 +79,8 @@ nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
 
-set spell spelllang=
+set spell spelllang=en_us
+set spellcapcheck-=.
 nnoremap <F9> :setlocal spell spelllang=de<cr>
 nnoremap <F10> :setlocal spell spelllang=en_us<cr>
 nnoremap <F11> :setlocal spell spelllang=<cr>
@@ -115,8 +117,8 @@ augroup vimrc_autocmd
 	autocmd!
 	autocmd bufenter,bufread .pwman.rc setfiletype text
 	autocmd bufenter,bufread *.md setfiletype mkd
-	autocmd bufenter,bufread *.groff setfiletype groff
-	autocmd bufenter,bufread *.ms setfiletype groff
+	autocmd bufenter,bufread *.groff setfiletype nroff
+	autocmd bufenter,bufread *.ms setfiletype nroff
 	autocmd bufenter,bufread *.json setfiletype javascript
 	autocmd bufenter,bufread *SCons* setfiletype python
 
@@ -125,6 +127,9 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread ~/work/** setlocal sw=2
 	autocmd FileType python setlocal ts=4
 	autocmd FileType python setlocal sw=4
+	autocmd FileType python setlocal et
+
+	autocmd FileType mail setlocal tw=72
 
 	autocmd bufenter,bufread *Makefile* setlocal noet
 
@@ -142,6 +147,10 @@ augroup END
 let g:netrw_liststyle=3
 
 """ From here on, only plugin and language specific settings
+"" TOhtml
+let g:html_ignore_folding=1
+let g:html_line_ids=1
+
 "" OCaml
 let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
@@ -188,6 +197,9 @@ let g:airline_theme = "powerlineish"
 "" Tmuxline
 let g:tmuxline_powerline_separators = 0
 
+"" Slimv
+let g:slimv_swank_cmd = '!tmux new-window -d -n SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+
 "" Slimux
 let g:slimux_select_from_current_window=1
 map <Leader>s :SlimuxREPLSendLine<CR>
@@ -198,3 +210,13 @@ map <Leader>vp :VimuxPromptCommand<CR>
 
 "" Fugitive
 map <Leader>g :Gstatus<CR>
+
+"" Hy
+let g:hy_enable_conceal = 1
+let g:hy_conceal_fancy = 1
+
+"" [ngt]roff
+augroup nroff
+	setlocal tw=0
+	setlocal spelllang=de
+augroup END
