@@ -230,9 +230,6 @@ else
 fi
 export FCEDIT=$EDITOR
 
-export LC_CTYPE=en_US.UTF-8
-export LC_MESSAGES=$LC_CTYPE
-
 export DOOMWADDIR=~/doom/iwads
 
 export GROFF_TMAC_PATH=~/.groff/tmac
@@ -254,6 +251,8 @@ export LESS='-RIMSN'
 export PYTHONPATH=~/sourcecode/HyREPL
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
 export MAVEN_OPTS='-Xmx1048m -XX:MaxPermSize=512m'
+
+export LANG=en_US.UTF-8
 # }}}
 
 # shell options {{{
