@@ -1,19 +1,22 @@
 let g:colors_name = "old"
 
+hi  Comment    ctermfg=104 ctermbg=0
 hi  Conceal    ctermfg=88 ctermbg=188
-hi  SpecialKey ctermfg=103
-hi  Statement  NONE
+hi  Constant   NONE
 hi  Identifier NONE
-hi  Type       NONE
+hi  LineNr     NONE
+hi  MoreMsg    NONE
 hi  Preproc    NONE
 hi  Special    NONE
+hi  SpecialKey ctermfg=103
+hi  SpellBad   ctermbg=52
+hi  Statement  NONE
 hi  String     ctermfg=1
-hi  Constant   NONE
 hi  Title      NONE
-hi  MoreMsg    NONE
-hi  LineNr     NONE
+hi  Type       NONE
 
 hi! link LineNr SpecialKey
+hi! link Error  SpellBad
 
 " GitGutter
 hi clear SignColumn
