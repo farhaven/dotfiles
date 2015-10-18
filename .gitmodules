@@ -91,3 +91,6 @@
 [submodule "vim/bundle/vim-dotoo"]
 	path = vim/bundle/vim-dotoo
 	url = http://github.com/dhruvasagar/vim-dotoo
+[submodule "vim/bundle/slimv"]
+	path = vim/bundle/slimv
+	url = https://github.com/kovisoft/slimv

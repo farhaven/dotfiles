@@ -79,6 +79,7 @@ function rgb {
 	echo -n $((($1 * 36) + ($2 * 6) + $3 + 16))
 }
 C_WHITE=$(rgb 5 5 5)
+C_BLACK=$(rgb 0 0 0)
 function airline {
 	typeset oldifs=$IFS
 	IFS="
@@ -100,7 +101,7 @@ function airline {
 
 		if [ $# -lt 3 ]; then
 			# color $C_WHITE $cnow 
-			color $C_WHITE $cnow " "
+			color $C_BLACK $cnow " "
 			IFS=$oldifs
 			return
 		fi
