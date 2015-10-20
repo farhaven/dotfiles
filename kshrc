@@ -101,7 +101,8 @@ function airline {
 
 		if [ $# -lt 3 ]; then
 			# color $C_WHITE $cnow 
-			color $C_BLACK $cnow " "
+			# color $C_BLACK $cnow " "
+			color $C_WHITE $cnow " "
 			IFS=$oldifs
 			return
 		fi

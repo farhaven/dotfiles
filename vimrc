@@ -52,7 +52,8 @@ set ttyfast
 " set mouse=a
 set mouse=rn
 
-set background=dark
+" set background=dark
+set background=light
 set guifont=PragmataPro\ for\ Powerline\ 10
 set guioptions-=mTr
 set guioptions+=c
@@ -121,6 +122,7 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread *.ms setfiletype nroff
 	autocmd bufenter,bufread *.json setfiletype javascript
 	autocmd bufenter,bufread *SCons* setfiletype python
+	autocmd bufenter,bufread *.asd setfiletype lisp
 
 	autocmd bufenter,bufread ~/work/** setlocal et
 	autocmd bufenter,bufread ~/work/** setlocal ts=2
@@ -194,16 +196,29 @@ let g:airline_powerline_fonts = 0
 let g:airline_section_z = airline#section#create(['%3p%%'])
 let g:airline_theme = "powerlineish"
 
+"" Rainbow
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ]
+
 "" Tmuxline
 let g:tmuxline_powerline_separators = 0
 
 "" Slimv
 let g:slimv_swank_cmd = '!tmux new-window -d -n SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
-
-"" Slimux
-let g:slimux_select_from_current_window=1
-map <Leader>s :SlimuxREPLSendLine<CR>
-vmap <Leader>s :SlimuxREPLSendSelection<CR>
 
 "" Vimux
 map <Leader>vp :VimuxPromptCommand<CR>
