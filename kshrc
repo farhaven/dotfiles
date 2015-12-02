@@ -101,7 +101,6 @@ function airline {
 
 		if [ $# -lt 3 ]; then
 			# color $C_WHITE $cnow 
-			# color $C_BLACK $cnow " "
 			color $C_WHITE $cnow " "
 			IFS=$oldifs
 			return
@@ -195,11 +194,7 @@ alias cp=$RSYNC_COMMON
 alias xmv="$RSYNC_COMMON --remove-source-files --delete-delay"
 alias rsync=$RSYNC_COMMON
 alias ..='cd ..'
-if [ "`uname`" = "OpenBSD" ]; then
-	alias ls='colorls -GF'
-else
-	alias ls='ls -F'
-fi
+alias ls='ls -F'
 alias sudo='sudo -E'
 alias m=mimehandler
 # }}}
@@ -224,8 +219,8 @@ export PATH
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
 export BROWSER=$HOME/bin/mimehandler
 if [ "$TERM" != "vt100" ]; then
-	export EDITOR="vim"
-	# export EDITOR="/usr/bin/vi"
+	# export EDITOR="vim"
+	export EDITOR="/usr/bin/vi"
 else
 	export EDITOR="ex"
 fi
@@ -236,7 +231,7 @@ export DOOMWADDIR=~/doom/iwads
 export GROFF_TMAC_PATH=~/.groff/tmac
 export GROFF_FONT_PATH=~/.groff/fonts
 
-export AUTOMAKE_VERSION=1.14
+export AUTOMAKE_VERSION=1.15
 export AUTOCONF_VERSION=2.69
 
 export AUTOSSH_LOGLEVEL=0

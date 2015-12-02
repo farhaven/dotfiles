@@ -6,12 +6,13 @@ set showmode
 set extended
 set verbose
 
-set tabstop=3
-set shiftwidth=3
+" set tabstop=3
+" set shiftwidth=3
 
-" use <TAB> for completion and command history
-set filec=\	
-set cedit=\	
+" <UP> for command history
+set cedit=OA
 
 " map <F2> to write and make
 map OQ :w:!make
+" <F3>: interactive git commit
+map OR :w:!git commit -s --interactive
