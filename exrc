@@ -1,3 +1,4 @@
+set nolock
 set nu
 set ai
 set searchincr

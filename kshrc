@@ -257,6 +257,9 @@ set -o emacs
 
 bind ^D=eot
 bind ^Y=beginning-of-line
+bind '[1~'=beginning-of-line
+bind '[4~'=end-of-line
 if [ "`uname`" = "OpenBSD" ]; then
 	stty -ixon -ixoff ixany status ^T
 fi
+ulimit -c 0
