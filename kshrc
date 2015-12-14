@@ -157,7 +157,7 @@ function prompt {
 
 	if [ ! -z "$branch" ]; then
 		elems[${#elems[*]}]=$(rgb 3 0 0)
-		elems[${#elems[*]}]="$branch"
+		elems[${#elems[*]}]=" $branch"
 		elems[${#elems[*]}]=$(rgb 4 0 0)
 		elems[${#elems[*]}]=" "
 	fi
