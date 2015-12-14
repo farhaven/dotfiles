@@ -91,8 +91,7 @@ function airline {
 		typeset cnow=$1
 		typeset txt=$(echo "$2" | sed -Ee 's/^[[:blank:]]+//' -e 's/[[:blank:]]+$//')
 		if [ $num -gt 0 ]; then
-			# color $cnow $cprev 
-			color $cnow $cprev "|"
+			color $cnow $cprev 
 		fi
 
 		if [ "x$txt" != "x" ]; then
@@ -100,8 +99,7 @@ function airline {
 		fi
 
 		if [ $# -lt 3 ]; then
-			# color $C_WHITE $cnow 
-			color $C_WHITE $cnow " "
+			color $C_WHITE $cnow 
 			IFS=$oldifs
 			return
 		fi

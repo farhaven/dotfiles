@@ -194,7 +194,7 @@ let g:clojure_align_multiline_strings = 1
 "" Airline
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#syntastic#enabled = 1
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 " Simpler position view
 let g:airline_section_z = airline#section#create(['%3p%%'])
 let g:airline_theme = "powerlineish"
@@ -218,7 +218,7 @@ let g:rbpt_colorpairs = [
     \ ]
 
 "" Tmuxline
-let g:tmuxline_powerline_separators = 0
+let g:tmuxline_powerline_separators = 1
 
 "" Slimv
 let g:slimv_swank_cmd = '!tmux new-window -d -n SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
