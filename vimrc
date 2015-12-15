@@ -2,7 +2,6 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 
 let mapleader=" "
 let g:pathogen_disabled = []
-" call add(g:pathogen_disabled, "vim-airline")
 call add(g:pathogen_disabled, "pycalc")
 call add(g:pathogen_disabled, "paredit.vim")
 call add(g:pathogen_disabled, "jedi-vim")
