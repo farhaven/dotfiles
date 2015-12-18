@@ -27,3 +27,5 @@ create_link xsession
 
 create_link tmux.conf
 create_link tmux-statusline-colors.conf
+
+create_link dwm.scm
