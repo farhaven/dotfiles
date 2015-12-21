@@ -20,10 +20,10 @@
 
 (define order
   '(("date" . ("#005faf" . "#0087d7"))
-    ("net" . ("#5F5F5F" . "#878787"))
+    ("net" . ("#5F005F" . "#870087"))
     ("apm". ("#008700" . "#00AF00"))
-    ("weather". ("#AF0000" . "#D70000"))
-    ("mpd" . ("#AF5F00" . "#D78700"))
+    ("weather" . ("#AF5F00" . "#D78700"))
+    ("mpd". ("#AF0000" . "#D70000"))
     ("err" . ("#400" . "#700"))))
 
 (define (get-items order data accum)
@@ -64,7 +64,6 @@
 
 (dwm-hook-drawstatus
   (lambda (x maxw sel)
-    (format #t "S: ~s\n" (dwm-status-text))
     (let*  ((d "")
             (dw (dwm-drw-textw d #t))
             (s (dwm-status-text))
@@ -76,7 +75,7 @@
                             (hash-set! h "err" "Invalid JSON")
                             h))))
             (items (get-items order data '()))
-            (x (draw-items maxw items #f)))
+            (x (draw-items (- maxw (dwm-systray-width)) items #f)))
       (let ((c (cdr (car (reverse items)))))
        (dwm-drw-set-colorscheme (dwm-make-colorscheme (cdr c) (if sel "#666" "#ccc")))
        (dwm-drw-text (- x dw) dw d #f #t))
