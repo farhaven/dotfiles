@@ -247,6 +247,8 @@ export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
 export MAVEN_OPTS='-Xmx1048m -XX:MaxPermSize=512m'
 
 export LANG=en_US.UTF-8
+
+export GUILE_LOAD_PATH="...:${HOME}/.guile"
 # }}}
 
 # shell options {{{
