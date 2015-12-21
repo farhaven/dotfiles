@@ -56,7 +56,7 @@ while true; do
 	if [ -O /tmp/wm.gbe ]; then
 		`cat /tmp/wm.gbe`
 	else
-		dwm
+		dwm-gbe
 	fi
 	# twm-tweaked
 	# fvwm
