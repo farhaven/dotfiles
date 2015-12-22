@@ -206,8 +206,7 @@ export HISTFILE=~/.history
 GOPATH=${HOME}/sourcecode/go
 export GOPATH
 
-PATH=${HOME}/maven/bin:${PATH}
-PATH=${HOME}/bin:${PATH}
+PATH=${HOME}/bin:${PATH}:/sbin:/usr/sbin:/usr/local/sbin
 PATH=${PATH}:/usr/local/games
 PATH=${PATH}:/usr/games
 PATH=${PATH}:/usr/local/jdk-1.7.0/bin
