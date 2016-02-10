@@ -1,0 +1,13 @@
+[user]
+	email = gbe@unobtanium.de
+	name = Gregor Best
+[color]
+	diff = true
+[push]
+	default = simple
+[web]
+	browser = mimehandler
+[format]
+	signoff = true
+[alias]
+	news = log -p HEAD@{1}..HEAD@{0}

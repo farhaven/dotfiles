@@ -12,8 +12,7 @@ function create_link {
 	ln -s "`pwd`/$1" "$target"
 }
 
-git submodule init
-git submodule update
+create_link gitconfig
 
 create_link vimrc
 create_link vim
@@ -29,3 +28,7 @@ create_link tmux.conf
 create_link tmux-statusline-colors.conf
 
 create_link dwm-gbe.scm
+
+git submodule init
+git submodule update
+
