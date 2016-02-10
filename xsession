@@ -35,7 +35,8 @@ xhost +localhost
 xscreensaver &
 compton -b
 dunst -follow keyboard -geometry 0x5-0+0 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
-redshift-gtk &
+# redshift-gtk &
+# sct > /dev/null &
 # (while sleep 5; do status; done | dzen2 -p -ta r -e 'onstart=lower' -fn "PragmataPro for Powerline:size=9") &
 (while sleep 5; do xsetroot -name "`status`"; done) &
 
