@@ -251,6 +251,9 @@ export LANG=en_US.UTF-8
 export GUILE_LOAD_PATH="...:${HOME}/.guile"
 # }}}
 
+# perl stuff
+eval $(perl -I ${HOME}/perl5/lib/perl5 -Mlocal::lib)
+
 # shell options {{{
 set -o emacs
 # }}}
