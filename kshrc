@@ -195,6 +195,7 @@ alias ..='cd ..'
 alias ls='ls -F'
 alias sudo='sudo -E'
 alias m=mimehandler
+alias top='top -HSs1'
 # }}}
 
 # history {{{
