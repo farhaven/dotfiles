@@ -1,15 +1,19 @@
 #!/bin/ksh
 
 function create_link {
-	typeset target="${HOME}/.$1"
+	typeset source="$1"
+	while [ $# -gt 0 ]; do
+		typeset target="${HOME}/.$1"
 
-	if [ -e "$target" ]; then
-		echo "$target already exists" 1>&2
-		return 1
-	fi
+		if [ -e "$target" ]; then
+			echo "$target already exists" 1>&2
+		else
+			echo "$target linked" 1>&2
+			ln -s "`pwd`/$source" "$target"
+		fi
 
-	echo "$target linked" 1>&2
-	ln -s "`pwd`/$1" "$target"
+		shift
+	done
 }
 
 create_link gitconfig
@@ -19,7 +23,7 @@ create_link vim
 
 create_link exrc
 
-create_link kshrc
+create_link kshrc mkshrc
 create_link profile
 
 create_link xsession
