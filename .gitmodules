@@ -94,3 +94,6 @@
 [submodule "vim/bundle/slimv"]
 	path = vim/bundle/slimv
 	url = https://github.com/kovisoft/slimv
+[submodule "vim/bundle/openscad.vim"]
+	path = vim/bundle/openscad.vim
+	url = https://github.com/vim-scripts/openscad.vim
