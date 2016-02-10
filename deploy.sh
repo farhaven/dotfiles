@@ -35,4 +35,3 @@ create_link dwm-gbe.scm
 
 git submodule init
 git submodule update
-
