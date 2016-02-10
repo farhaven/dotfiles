@@ -10,14 +10,6 @@
 
 (dwm-notify "(Re)loaded config")
 
-(define (plain maxw)
-  (let* ((s (dwm-status-text))
-         (w (dwm-drw-textw s))
-         (x (- maxw w (dwm-systray-width))))
-    (dwm-drw-set-colorscheme cs-norm)
-    (dwm-drw-text x w s)
-    x))
-
 (define order
   '(("date" . ("#005faf" . "#0087d7"))
     ("net" . ("#5F005F" . "#870087"))
