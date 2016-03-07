@@ -136,7 +136,7 @@ function prompt {
 	elems[${#elems[*]}]=$(rgb 0 2 4)
 	elems[${#elems[*]}]=" "
 
-	if [ "`uname`" = "OpenBSD" ]; then
+	if [ "`uname`" = "OpenBSD" ] && `false`; then
 		elems[${#elems[*]}]=$(rgb 3 1 0)
 		elems[${#elems[*]}]="$(rtable)"
 		elems[${#elems[*]}]=$(rgb 4 2 0)
