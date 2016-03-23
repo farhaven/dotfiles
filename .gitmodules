@@ -64,9 +64,6 @@
 [submodule "vim/bundle/vim-sexp"]
 	path = vim/bundle/vim-sexp
 	url = https://github.com/guns/vim-sexp.git
-[submodule "vim/bundle/vim-ondemandhightlight"]
-	path = vim/bundle/vim-ondemandhightlight
-	url = https://github.com/epage/vim-ondemandhightlight.git
 [submodule "vim/bundle/vim-etherpad"]
 	path = vim/bundle/vim-etherpad
 	url = https://github.com/guyzmo/vim-etherpad.git
