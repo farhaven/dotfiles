@@ -127,9 +127,13 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread *SCons* setfiletype python
 	autocmd bufenter,bufread *.asd setfiletype lisp
 
-	autocmd bufenter,bufread ~/work/** setlocal et
-	autocmd bufenter,bufread ~/work/** setlocal ts=2
-	autocmd bufenter,bufread ~/work/** setlocal sw=2
+	autocmd bufenter,bufread /usr/src/** setlocal ts=8
+	autocmd bufenter,bufread /usr/src/** setlocal sw=8
+
+	autocmd filetype yaml setlocal et
+	autocmd filetype yaml setlocal ts=2
+	autocmd filetype yaml setlocal sw=2
+
 	autocmd FileType python setlocal ts=4
 	autocmd FileType python setlocal sw=4
 	autocmd FileType python setlocal et
