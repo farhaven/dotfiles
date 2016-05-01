@@ -125,40 +125,40 @@ function prompt {
 
 	set -A elems
 	if [ $laststatus -ne 0 ]; then
-		elems[${#elems[*]}]=$(rgb 3 0 0)
-		elems[${#elems[*]}]="◊ $laststatus"
 		elems[${#elems[*]}]=$(rgb 4 0 0)
+		elems[${#elems[*]}]="◊ $laststatus"
+		elems[${#elems[*]}]=$(rgb 3 0 0)
 		elems[${#elems[*]}]=" "
 	fi
 
-	elems[${#elems[*]}]=$(rgb 0 1 3)
-	elems[${#elems[*]}]="$(hostname -s)"
 	elems[${#elems[*]}]=$(rgb 0 2 4)
+	elems[${#elems[*]}]="$(hostname -s)"
+	elems[${#elems[*]}]=$(rgb 0 1 3)
 	elems[${#elems[*]}]=" "
 
-	if [ "`uname`" = "OpenBSD" ] && `false`; then
-		elems[${#elems[*]}]=$(rgb 3 1 0)
-		elems[${#elems[*]}]="$(rtable)"
+	if [ "`uname`" = "OpenBSD" ]; then
 		elems[${#elems[*]}]=$(rgb 4 2 0)
+		elems[${#elems[*]}]="$(rtable)"
+		elems[${#elems[*]}]=$(rgb 3 1 0)
 		elems[${#elems[*]}]=" "
 	fi
 
 	if [ ! -z $venv ]; then
-		elems[${#elems[*]}]=$(rgb 1 1 1)
-		elems[${#elems[*]}]="$venv"
 		elems[${#elems[*]}]=$(rgb 2 2 2)
+		elems[${#elems[*]}]="$venv"
+		elems[${#elems[*]}]=$(rgb 1 1 1)
 		elems[${#elems[*]}]=" "
 	fi
 
-	elems[${#elems[*]}]=$(rgb 0 2 0)
-	elems[${#elems[*]}]="$(neatpwd)"
 	elems[${#elems[*]}]=$(rgb 0 3 0)
+	elems[${#elems[*]}]="$(neatpwd)"
+	elems[${#elems[*]}]=$(rgb 0 2 0)
 	elems[${#elems[*]}]=" "
 
 	if [ ! -z "$branch" ]; then
-		elems[${#elems[*]}]=$(rgb 3 0 0)
-		elems[${#elems[*]}]=" $branch"
 		elems[${#elems[*]}]=$(rgb 4 0 0)
+		elems[${#elems[*]}]=" $branch"
+		elems[${#elems[*]}]=$(rgb 3 0 0)
 		elems[${#elems[*]}]=" "
 	fi
 
