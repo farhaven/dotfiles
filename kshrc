@@ -204,6 +204,9 @@ export HISTFILE=~/.history
 # }}}
 
 # env vars {{{
+LUA_PATH="${HOME}/.lua/?.lua;${HOME}/sourcecode/lunajson/src/?.lua;;"
+export LUA_PATH
+
 GOPATH=${HOME}/sourcecode/go
 export GOPATH
 
