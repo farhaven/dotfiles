@@ -15,6 +15,7 @@ hi  Statement  NONE
 hi  String     ctermfg=1
 hi  Title      NONE
 hi  Type       NONE
+hi  colorcolumn ctermbg=95 ctermfg=231
 
 hi! link LineNr SpecialKey
 hi! link Error  SpellBad
