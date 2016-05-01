@@ -9,6 +9,8 @@ eval $(gpg-agent -s --daemon --pinentry-program `which pinentry-gtk-2`)
 
 env | grep ^SSH > /tmp/ssh-agent
 
+mount | grep -q "^tmpfs.*\.cache" || mount -t tmpfs tmpfs ~/.cache
+
 # change the desktop wallpaper every two hours
 while true; do
 	bdselect
