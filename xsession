@@ -34,6 +34,7 @@ xmodmap ~/.xmodmap
 xhost +localhost
 
 # stalonetray --geometry 1x1-0-0 --grow-gravity W &
+autocutsel -fork
 xscreensaver &
 compton -b
 dunst -follow keyboard -geometry 0x5-0+0 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
