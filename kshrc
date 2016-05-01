@@ -243,7 +243,7 @@ if which opam 2>/dev/null >/dev/null; then
 	eval `opam config env`
 fi
 
-export LESS='-RIMSN'
+export LESS='-RIMS'
 
 export PYTHONPATH=~/sourcecode/HyREPL
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
