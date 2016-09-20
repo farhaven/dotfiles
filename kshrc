@@ -214,11 +214,13 @@ export LUA_PATH
 GOPATH=${HOME}/sourcecode/go
 export GOPATH
 
+PATH=${PATH}:"/Applications/VMware Fusion.app/Contents/Library"
 PATH=${HOME}/bin:${PATH}:/sbin:/usr/sbin:/usr/local/sbin
 PATH=${PATH}:/usr/local/games
 PATH=${PATH}:/usr/games
 PATH=${PATH}:/usr/local/jdk-1.7.0/bin
 PATH=${PATH}:${GOPATH}/bin
+PATH=${PATH}:/Users/gbe/Library/Android/sdk/platform-tools
 export PATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
