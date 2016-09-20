@@ -5,6 +5,13 @@ let g:pathogen_disabled = []
 call add(g:pathogen_disabled, "pycalc")
 call add(g:pathogen_disabled, "paredit.vim")
 call add(g:pathogen_disabled, "jedi-vim")
+call add(g:pathogen_disabled, "ocp-indent-vim")
+call add(g:pathogen_disabled, "rcs-vim")
+call add(g:pathogen_disabled, "slimux")
+call add(g:pathogen_disabled, "slimv")
+call add(g:pathogen_disabled, "vim-dotoo")
+call add(g:pathogen_disabled, "vim-kerboscript")
+call add(g:pathogen_disabled, "vim-ondemandhighlight")
 execute pathogen#infect()
 
 set nocompatible
@@ -89,7 +96,7 @@ nnoremap <F9> :setlocal spell spelllang=de<cr>
 nnoremap <F10> :setlocal spell spelllang=en_us<cr>
 nnoremap <F11> :setlocal spell spelllang=<cr>
 
-exec "set listchars=tab:>-,trail:\uB7,nbsp:~"
+exec "set listchars=tab:>_,trail:\uB7,nbsp:~"
 set list
 
 let g:stop_autocomplete=0
@@ -124,6 +131,7 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread *.groff setfiletype nroff
 	autocmd bufenter,bufread *.ms setfiletype nroff
 	autocmd bufenter,bufread *.json setfiletype javascript
+	autocmd bufenter,bufread *.sls setfiletype yaml
 	autocmd bufenter,bufread *SCons* setfiletype python
 	autocmd bufenter,bufread *.asd setfiletype lisp
 
@@ -242,3 +250,6 @@ augroup nroff
 	setlocal tw=0
 	setlocal spelllang=de
 augroup END
+
+"" Shell scripts
+let g:is_bash=1
