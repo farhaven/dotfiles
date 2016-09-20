@@ -1,12 +1,12 @@
 [user]
-	email = gbe@unobtanium.de
+	email = gregor.best@vasgard.com
 	name = Gregor Best
 [color]
 	diff = true
 [push]
 	default = simple
 [web]
-	browser = mimehandler
+	browser = open
 [format]
 	signoff = true
 [alias]
