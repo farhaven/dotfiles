@@ -4,10 +4,13 @@
 [color]
 	diff = true
 [push]
-	default = simple
+	default = matching
 [web]
 	browser = open
 [format]
 	signoff = true
 [alias]
 	news = log -p HEAD@{1}..HEAD@{0}
+	unmerged = !git branch --no-merged | xargs -L1 git --no-pager log --pretty=tformat:'%Cgreen%d%Creset - %h by %an (%Cblue%ar%Creset)' -1
+	merged = !git branch --merged | grep -v '^* ' | xargs -L1 git --no-pager log --pretty=tformat:'%Cgreen%d%Creset - %h by %an (%Cblue%ar%Creset)' -1
+	opush = !git push origin `git branch | grep '^* '`
