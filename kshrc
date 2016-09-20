@@ -195,7 +195,11 @@ alias ..='cd ..'
 alias ls='ls -F'
 alias sudo='sudo -E'
 alias m=mimehandler
-alias top='top -HSs1'
+function dtop {
+	typeset container=$1
+	shift
+	docker exec -it "$container" sh -c "env TERM=vt220 top $@"
+}
 # }}}
 
 # history {{{
