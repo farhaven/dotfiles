@@ -9,7 +9,7 @@ eval $(gpg-agent -s --daemon --pinentry-program `which pinentry-gtk-2`)
 
 env | grep ^SSH > /tmp/ssh-agent
 
-mount | grep -q "^tmpfs.*\.cache" || mount -t tmpfs tmpfs ~/.cache
+mount | grep -q "^mfs.*\.cache" || doas mount -t mfs -o -s300M swap ~/.cache
 
 # change the desktop wallpaper every two hours
 while true; do
