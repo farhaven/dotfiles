@@ -43,8 +43,8 @@ xhost +localhost
 # stalonetray --geometry 1x1-0-0 --grow-gravity W &
 autocutsel -fork
 xscreensaver &
-compton -b
-dunst -follow keyboard -geometry 0x5-0+0 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
+# compton -b
+dunst -follow keyboard -geometry 0x5-0+16 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
 # redshift-gtk &
 # sct > /dev/null &
 # (while sleep 5; do status; done | dzen2 -p -ta r -e 'onstart=lower' -fn "PragmataPro for Powerline:size=9") &
