@@ -28,6 +28,13 @@ xset fp rehash
 xset r rate 240 20
 xset dpms 120 180 240
 
+synclient TapButton1=1
+synclient TapButton2=3
+synclient TapButton3=2
+synclient VertScrollDelta=-100
+synclient LockedDrags=1
+synclient LockedDragTimeout=2500
+
 xrdb -load ~/.Xdefaults
 setxkbmap us intl-unicode
 xmodmap ~/.xmodmap
