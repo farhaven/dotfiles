@@ -94,30 +94,30 @@ nnoremap <F11> :setlocal spell spelllang=<cr>
 exec "set listchars=tab:>_,trail:\uB7,nbsp:~"
 set list
 
-let g:stop_autocomplete=0
-function! BetterComplete(type)
-	if a:type == 'omni'
-		if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
-			let g:stop_autocomplete=1
-			return "\<TAB>"
-		elseif !pumvisible() && !&omnifunc
-			return "\<C-X>\<C-O>\<C-P>"
-		endif
-	elseif a:type == 'keyword' && !pumvisible() && !g:stop_autocomplete
-		return "\<C-X>\<C-N>\<C-P>"
-	elseif a:type == 'next'
-		if g:stop_autocomplete
-			let g:stop_autocomplete=0
-		else
-			return "\<C-n>"
-		endif
-	endif
-	return ''
-endfunction
+" let g:stop_autocomplete=0
+" function! BetterComplete(type)
+" 	if a:type == 'omni'
+" 		if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+" 			let g:stop_autocomplete=1
+" 			return "\<TAB>"
+" 		elseif !pumvisible() && !&omnifunc
+" 			return "\<C-X>\<C-O>\<C-P>"
+" 		endif
+" 	elseif a:type == 'keyword' && !pumvisible() && !g:stop_autocomplete
+" 		return "\<C-X>\<C-N>\<C-P>"
+" 	elseif a:type == 'next'
+" 		if g:stop_autocomplete
+" 			let g:stop_autocomplete=0
+" 		else
+" 			return "\<C-n>"
+" 		endif
+" 	endif
+" 	return ''
+" endfunction
 set completeopt=menuone,menu,longest,preview
 set complete=.,w,b,u,t,i ",kspell
 set omnifunc=syntaxcomplete#Complete
-inoremap <silent><TAB> <C-R>=BetterComplete('omni')<CR><C-R>=BetterComplete('keyword')<CR><C-R>=BetterComplete('next')<CR>
+" inoremap <silent><TAB> <C-R>=BetterComplete('omni')<CR><C-R>=BetterComplete('keyword')<CR><C-R>=BetterComplete('next')<CR>
 
 augroup vimrc_autocmd
 	autocmd!
