@@ -223,11 +223,10 @@ export PATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
 export BROWSER=$HOME/bin/mimehandler
-if [ "$TERM" != "vt100" ]; then
-	export EDITOR="vim"
-	# export EDITOR="/usr/bin/vi"
+if [ "$TERM" == "vt220" ]; then
+	export EDITOR="/usr/bin/vi"
 else
-	export EDITOR="ex"
+	export EDITOR="vim"
 fi
 export FCEDIT=$EDITOR
 
