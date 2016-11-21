@@ -5,6 +5,13 @@ let g:pathogen_disabled = []
 call add(g:pathogen_disabled, "pycalc")
 call add(g:pathogen_disabled, "paredit.vim")
 call add(g:pathogen_disabled, "jedi-vim")
+call add(g:pathogen_disabled, "ocp-indent-vim")
+call add(g:pathogen_disabled, "rcs-vim")
+call add(g:pathogen_disabled, "slimux")
+call add(g:pathogen_disabled, "slimv")
+call add(g:pathogen_disabled, "vim-dotoo")
+call add(g:pathogen_disabled, "vim-kerboscript")
+call add(g:pathogen_disabled, "vim-ondemandhighlight")
 execute pathogen#infect()
 
 set nocompatible
@@ -126,6 +133,7 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread *.groff setfiletype nroff
 	autocmd bufenter,bufread *.ms setfiletype nroff
 	autocmd bufenter,bufread *.json setfiletype javascript
+	autocmd bufenter,bufread *.sls setfiletype yaml
 	autocmd bufenter,bufread *SCons* setfiletype python
 	autocmd bufenter,bufread *.asd setfiletype lisp
 

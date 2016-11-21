@@ -198,6 +198,11 @@ alias m=mimehandler
 if [ "`uname`" == "OpenBSD" ]; then
 	alias top='top -HSs1'
 fi
+function dtop {
+	typeset container=$1
+	shift
+	docker exec -it "$container" sh -c "env TERM=vt220 top $@"
+}
 # }}}
 
 # history {{{
@@ -212,6 +217,7 @@ export LUA_PATH
 GOPATH=${HOME}/sourcecode/go
 export GOPATH
 
+PATH=${PATH}:"/Applications/VMware Fusion.app/Contents/Library"
 PATH=${HOME}/bin:/sbin:/usr/sbin:/usr/local/sbin
 PATH=${PATH}:/bin:/usr/bin:/usr/local/bin
 PATH=${PATH}:/usr/X11R6/bin
@@ -219,6 +225,7 @@ PATH=${PATH}:/usr/local/games
 PATH=${PATH}:/usr/games
 PATH=${PATH}:/usr/local/jdk-1.8.0/bin
 PATH=${PATH}:${GOPATH}/bin
+PATH=${PATH}:/Users/gbe/Library/Android/sdk/platform-tools
 export PATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
@@ -249,6 +256,8 @@ fi
 export LESS='-RIMS'
 
 export PYTHONPATH=~/sourcecode/HyREPL
+export VIRTUAL_ENV_DISABLE_PROMPT=yes
+
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
 export MAVEN_OPTS='-Xmx1048m -XX:MaxPermSize=512m'
 
