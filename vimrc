@@ -91,7 +91,7 @@ nnoremap <F9> :setlocal spell spelllang=de<cr>
 nnoremap <F10> :setlocal spell spelllang=en_us<cr>
 nnoremap <F11> :setlocal spell spelllang=<cr>
 
-exec "set listchars=tab:>-,trail:\uB7,nbsp:~"
+exec "set listchars=tab:>_,trail:\uB7,nbsp:~"
 set list
 
 let g:stop_autocomplete=0
