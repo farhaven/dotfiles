@@ -28,6 +28,7 @@ xset fp rehash
 xset r rate 240 20
 xset dpms 120 180 240
 
+syndaemon -i 0.2 -d
 synclient TapButton1=1
 synclient TapButton2=3
 synclient TapButton3=2
