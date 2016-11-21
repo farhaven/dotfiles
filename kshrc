@@ -212,10 +212,12 @@ export LUA_PATH
 GOPATH=${HOME}/sourcecode/go
 export GOPATH
 
-PATH=${HOME}/bin:${PATH}:/sbin:/usr/sbin:/usr/local/sbin
+PATH=${HOME}/bin:/sbin:/usr/sbin:/usr/local/sbin
+PATH=${PATH}:/bin:/usr/bin:/usr/local/bin
+PATH=${PATH}:/usr/X11R6/bin
 PATH=${PATH}:/usr/local/games
 PATH=${PATH}:/usr/games
-PATH=${PATH}:/usr/local/jdk-1.7.0/bin
+PATH=${PATH}:/usr/local/jdk-1.8.0/bin
 PATH=${PATH}:${GOPATH}/bin
 export PATH
 
