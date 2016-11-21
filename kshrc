@@ -195,7 +195,9 @@ alias ..='cd ..'
 alias ls='ls -F'
 alias sudo='sudo -E'
 alias m=mimehandler
-alias top='top -HSs1'
+if [ "`uname`" == "OpenBSD" ]; then
+	alias top='top -HSs1'
+fi
 # }}}
 
 # history {{{
