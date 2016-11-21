@@ -274,4 +274,4 @@ stty -ixon -ixoff ixany
 if [ "`uname`" = "OpenBSD" ]; then
 	stty status ^T
 fi
-ulimit -c 0
+# ulimit -c 0
