@@ -73,8 +73,8 @@ nnoremap <F3> :w<cr>:!exctags -R --sort=yes --fields=+iaS --extra=+q .<cr>
 nnoremap <F5> :cprevious<cr>
 nnoremap <F6> :cnext<cr>
 
-nnoremap gQ {v}!par 72rj<cr>
-vnoremap gQ :'<,'>!par 72rj<cr>
+nnoremap gQ {v}!par 72rj
+vnoremap gQ :'<,'>!par 72rj
 
 nnoremap Q <nop>
 nnoremap q <nop>
