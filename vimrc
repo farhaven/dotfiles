@@ -244,3 +244,6 @@ augroup nroff
 	setlocal tw=0
 	setlocal spelllang=de
 augroup END
+
+"" Syntax highlighting for sh files
+let g:is_kornshell=1
