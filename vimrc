@@ -83,6 +83,8 @@ nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
 
+imap <Nul> <Space>
+
 " set spell spelllang=
 set spellcapcheck-=.
 nnoremap <F9> :setlocal spell spelllang=de<cr>
