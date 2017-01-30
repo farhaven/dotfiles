@@ -76,6 +76,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
 nnoremap <F2> :w<cr>:Dispatch<cr>
+nnoremap M :w<cr>:Dispatch<cr>
 nnoremap <F3> :w<cr>:!exctags -R --sort=yes --fields=+iaS --extra=+q .<cr>
 nnoremap <F5> :cprevious<cr>
 nnoremap <F6> :cnext<cr>
@@ -96,7 +97,7 @@ nnoremap <F9> :setlocal spell spelllang=de<cr>
 nnoremap <F10> :setlocal spell spelllang=en_us<cr>
 nnoremap <F11> :setlocal spell spelllang=<cr>
 
-exec "set listchars=tab:>_,trail:\uB7,nbsp:~"
+exec "set listchars=tab:>\uB7,trail:\uB7,nbsp:~"
 set list
 
 let g:stop_autocomplete=0
@@ -152,6 +153,7 @@ augroup vimrc_autocmd
 
 	autocmd FileType tex :NoMatchParen
 	au FileType tex setlocal nocursorline
+	au FileType tex syntax region texZone start='\\begin{lstlisting}' end='\\end{lstlisting}'
 
 	au VimEnter * RainbowParenthesesToggle
 	au Syntax * RainbowParenthesesLoadRound
