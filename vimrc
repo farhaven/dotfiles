@@ -81,8 +81,8 @@ nnoremap <F3> :w<cr>:!exctags -R --sort=yes --fields=+iaS --extra=+q .<cr>
 nnoremap <F5> :cprevious<cr>
 nnoremap <F6> :cnext<cr>
 
-nnoremap gQ {v}!par 72rj<cr>
-vnoremap gQ :'<,'>!par 72rj<cr>
+nnoremap gQ {v}!par 72rj
+vnoremap gQ :'<,'>!par 72rj
 
 nnoremap Q <nop>
 nnoremap q <nop>
@@ -90,6 +90,8 @@ nnoremap q <nop>
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
+
+imap <Nul> <Space>
 
 " set spell spelllang=
 set spellcapcheck-=.
@@ -100,30 +102,30 @@ nnoremap <F11> :setlocal spell spelllang=<cr>
 exec "set listchars=tab:>\uB7,trail:\uB7,nbsp:~"
 set list
 
-let g:stop_autocomplete=0
-function! BetterComplete(type)
-	if a:type == 'omni'
-		if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
-			let g:stop_autocomplete=1
-			return "\<TAB>"
-		elseif !pumvisible() && !&omnifunc
-			return "\<C-X>\<C-O>\<C-P>"
-		endif
-	elseif a:type == 'keyword' && !pumvisible() && !g:stop_autocomplete
-		return "\<C-X>\<C-N>\<C-P>"
-	elseif a:type == 'next'
-		if g:stop_autocomplete
-			let g:stop_autocomplete=0
-		else
-			return "\<C-n>"
-		endif
-	endif
-	return ''
-endfunction
+" let g:stop_autocomplete=0
+" function! BetterComplete(type)
+" 	if a:type == 'omni'
+" 		if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+" 			let g:stop_autocomplete=1
+" 			return "\<TAB>"
+" 		elseif !pumvisible() && !&omnifunc
+" 			return "\<C-X>\<C-O>\<C-P>"
+" 		endif
+" 	elseif a:type == 'keyword' && !pumvisible() && !g:stop_autocomplete
+" 		return "\<C-X>\<C-N>\<C-P>"
+" 	elseif a:type == 'next'
+" 		if g:stop_autocomplete
+" 			let g:stop_autocomplete=0
+" 		else
+" 			return "\<C-n>"
+" 		endif
+" 	endif
+" 	return ''
+" endfunction
 set completeopt=menuone,menu,longest,preview
 set complete=.,w,b,u,t,i ",kspell
 set omnifunc=syntaxcomplete#Complete
-inoremap <silent><TAB> <C-R>=BetterComplete('omni')<CR><C-R>=BetterComplete('keyword')<CR><C-R>=BetterComplete('next')<CR>
+" inoremap <silent><TAB> <C-R>=BetterComplete('omni')<CR><C-R>=BetterComplete('keyword')<CR><C-R>=BetterComplete('next')<CR>
 
 augroup vimrc_autocmd
 	autocmd!
@@ -253,5 +255,5 @@ augroup nroff
 	setlocal spelllang=de
 augroup END
 
-"" Shell scripts
-let g:is_bash=1
+"" Syntax highlighting for sh files
+let g:is_kornshell=1

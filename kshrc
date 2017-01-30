@@ -195,6 +195,9 @@ alias ..='cd ..'
 alias ls='ls -F'
 alias sudo='sudo -E'
 alias m=mimehandler
+if [ "`uname`" == "OpenBSD" ]; then
+	alias top='top -HSs1'
+fi
 function dtop {
 	typeset container=$1
 	shift
@@ -215,21 +218,22 @@ GOPATH=${HOME}/sourcecode/go
 export GOPATH
 
 PATH=${PATH}:"/Applications/VMware Fusion.app/Contents/Library"
-PATH=${HOME}/bin:${PATH}:/sbin:/usr/sbin:/usr/local/sbin
+PATH=${HOME}/bin:/sbin:/usr/sbin:/usr/local/sbin
+PATH=${PATH}:/bin:/usr/bin:/usr/local/bin
+PATH=${PATH}:/usr/X11R6/bin
 PATH=${PATH}:/usr/local/games
 PATH=${PATH}:/usr/games
-PATH=${PATH}:/usr/local/jdk-1.7.0/bin
+PATH=${PATH}:/usr/local/jdk-1.8.0/bin
 PATH=${PATH}:${GOPATH}/bin
 PATH=${PATH}:/Users/gbe/Library/Android/sdk/platform-tools
 export PATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
 export BROWSER=$HOME/bin/mimehandler
-if [ "$TERM" != "vt100" ]; then
-	export EDITOR="vim"
-	# export EDITOR="/usr/bin/vi"
+if [ "$TERM" == "vt220" ]; then
+	export EDITOR="/usr/bin/vi"
 else
-	export EDITOR="ex"
+	export EDITOR="vim"
 fi
 export FCEDIT=$EDITOR
 
@@ -279,4 +283,4 @@ stty -ixon -ixoff ixany
 if [ "`uname`" = "OpenBSD" ]; then
 	stty status ^T
 fi
-ulimit -c 0
+# ulimit -c 0
