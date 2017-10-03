@@ -219,13 +219,15 @@ export GOPATH
 
 PATH=${PATH}:"/Applications/VMware Fusion.app/Contents/Library"
 PATH=${HOME}/bin:/sbin:/usr/sbin:/usr/local/sbin
-PATH=${PATH}:/bin:/usr/bin:/usr/local/bin
+PATH=${PATH}:/usr/local/bin:/bin:/usr/bin
 PATH=${PATH}:/usr/X11R6/bin
 PATH=${PATH}:/usr/local/games
 PATH=${PATH}:/usr/games
 PATH=${PATH}:/usr/local/jdk-1.8.0/bin
 PATH=${PATH}:${GOPATH}/bin
 PATH=${PATH}:/Users/gbe/Library/Android/sdk/platform-tools
+PATH=${PATH}:/usr/local/texlive/2015/bin/universal-darwin
+PATH=${PATH}:/Library/Frameworks/Mono.framework/Commands/
 export PATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
