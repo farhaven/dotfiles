@@ -70,9 +70,6 @@
 [submodule "vim/bundle/vim-monochrome"]
 	path = vim/bundle/vim-monochrome
 	url = https://github.com/fxn/vim-monochrome.git
-[submodule "vim/bundle/slimux"]
-	path = vim/bundle/slimux
-	url = https://github.com/epeli/slimux
 [submodule "vim/bundle/wildfire.vim"]
 	path = vim/bundle/wildfire.vim
 	url = https://github.com/gcmt/wildfire.vim.git
@@ -82,15 +79,9 @@
 [submodule "vim/bundle/vim-rfc"]
 	path = vim/bundle/vim-rfc
 	url = git@github.com:mhinz/vim-rfc.git
-[submodule "vim/bundle/vim-kerboscript"]
-	path = vim/bundle/vim-kerboscript
-	url = git://github.com/tomvanderlee/vim-kerboscript.git
 [submodule "vim/bundle/vim-dotoo"]
 	path = vim/bundle/vim-dotoo
 	url = http://github.com/dhruvasagar/vim-dotoo
-[submodule "vim/bundle/slimv"]
-	path = vim/bundle/slimv
-	url = https://github.com/kovisoft/slimv
 [submodule "vim/bundle/openscad.vim"]
 	path = vim/bundle/openscad.vim
 	url = https://github.com/vim-scripts/openscad.vim
@@ -100,3 +91,6 @@
 [submodule "vim/bundle/ansible-vim"]
 	path = vim/bundle/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim
+[submodule "vim/LaTeX-Box"]
+	path = vim/LaTeX-Box
+	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git

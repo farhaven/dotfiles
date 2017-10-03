@@ -188,9 +188,9 @@ $(color 00 $(rgb 1 1 2) "$(userchar)") '
 # aliases {{{
 RSYNC_COMMON='rsync -hPr'
 # alias rm='rm -rf'
-alias cp=$RSYNC_COMMON
+alias cp="$RSYNC_COMMON"
 alias xmv="$RSYNC_COMMON --remove-source-files --delete-delay"
-alias rsync=$RSYNC_COMMON
+alias rsync="$RSYNC_COMMON"
 alias ..='cd ..'
 alias ls='ls -F'
 alias sudo='sudo -E'
