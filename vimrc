@@ -58,6 +58,7 @@ set ttyfast
 
 " set mouse=a
 set mouse=rn
+set ttymouse=sgr
 
 " set background=dark
 set background=light
@@ -75,8 +76,8 @@ nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
-nnoremap <F2> :w<cr>:Dispatch<cr>
-nnoremap M :w<cr>:Dispatch<cr>
+nnoremap <F2> :w<cr>:Dispatch make<cr>
+nnoremap M :w<cr>:Dispatch make<cr>
 nnoremap <F3> :w<cr>:!exctags -R --sort=yes --fields=+iaS --extra=+q .<cr>
 nnoremap <F5> :cprevious<cr>
 nnoremap <F6> :cnext<cr>
@@ -98,6 +99,10 @@ set spellcapcheck-=.
 nnoremap <F9> :setlocal spell spelllang=de<cr>
 nnoremap <F10> :setlocal spell spelllang=en_us<cr>
 nnoremap <F11> :setlocal spell spelllang=<cr>
+
+nnoremap <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
+  \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 exec "set listchars=tab:>\uB7,trail:\uB7,nbsp:~"
 set list
@@ -138,24 +143,34 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread *SCons* setfiletype python
 	autocmd bufenter,bufread *.asd setfiletype lisp
 
-	autocmd bufenter,bufread /usr/src/** setlocal ts=8
 	autocmd bufenter,bufread /usr/src/** setlocal sw=8
+	autocmd bufenter,bufread /usr/src/** setlocal ts=8
 
 	autocmd filetype yaml setlocal et
-	autocmd filetype yaml setlocal ts=2
 	autocmd filetype yaml setlocal sw=2
+	autocmd filetype yaml setlocal ts=2
 
-	autocmd FileType python setlocal ts=4
-	autocmd FileType python setlocal sw=4
 	autocmd FileType python setlocal et
+	autocmd FileType python setlocal sw=4
+	autocmd FileType python setlocal ts=4
+
+	autocmd FileType javascript setlocal et
+	autocmd FileType javascript setlocal sw=2
+	autocmd FileType javascript setlocal ts=2
+
+	autocmd FileType scss setlocal et
+	autocmd FileType scss setlocal sw=2
+	autocmd FileType scss setlocal ts=2
 
 	autocmd FileType mail setlocal tw=72
 
 	autocmd bufenter,bufread *Makefile* setlocal noet
 
-	autocmd FileType tex :NoMatchParen
+	au FileType tex :NoMatchParen
 	au FileType tex setlocal nocursorline
-	au FileType tex syntax region texZone start='\\begin{lstlisting}' end='\\end{lstlisting}'
+	au FileType tex syn region texZone start="\\begin{lstlisting}" end="\\end{lstlisting}\|%stopzone\>"
+	au FileType tex syn region texZone  start="\\lstinputlisting" end="{\s*[a-zA-Z/.0-9_^]\+\s*}"
+	au FileType tex syn match texInputFile "\\lstinline\s*\(\[.*\]\)\={.\{-}}" contains=texStatement,texInputCurlies,texInputFileOpt
 
 	au VimEnter * RainbowParenthesesToggle
 	au Syntax * RainbowParenthesesLoadRound
@@ -168,6 +183,8 @@ augroup END
 let g:netrw_liststyle=3
 
 """ From here on, only plugin and language specific settings
+"" Latex
+let g:tex_flavor='latex'
 "" TOhtml
 let g:html_ignore_folding=1
 let g:html_line_ids=1
@@ -257,3 +274,11 @@ augroup END
 
 "" Syntax highlighting for sh files
 let g:is_kornshell=1
+
+"" Django
+augroup django_autocmd
+	autocmd FileType htmldjango syn clear djangoError
+	autocmd FileType htmldjango setlocal ts=2
+	autocmd FileType htmldjango setlocal sw=2
+	autocmd FileType htmldjango setlocal et
+augroup END
