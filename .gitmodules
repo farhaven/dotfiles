@@ -82,9 +82,6 @@
 [submodule "vim/bundle/vim-rfc"]
 	path = vim/bundle/vim-rfc
 	url = git@github.com:mhinz/vim-rfc.git
-[submodule "vim/bundle/vim-kerboscript"]
-	path = vim/bundle/vim-kerboscript
-	url = git://github.com/tomvanderlee/vim-kerboscript.git
 [submodule "vim/bundle/vim-dotoo"]
 	path = vim/bundle/vim-dotoo
 	url = http://github.com/dhruvasagar/vim-dotoo
