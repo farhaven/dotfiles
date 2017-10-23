@@ -136,6 +136,11 @@ function prompt {
 	elems[${#elems[*]}]=$(rgb 0 1 3)
 	elems[${#elems[*]}]=" "
 
+	elems[${#elems[*]}]=$(rgb 3 0 3)
+	elems[${#elems[*]}]="$(date '+%d %H%MJ %b%y')"
+	elems[${#elems[*]}]=$(rgb 2 0 2)
+	elems[${#elems[*]}]=" "
+
 	if [ "`uname`" = "OpenBSD" ]; then
 		elems[${#elems[*]}]=$(rgb 4 2 0)
 		elems[${#elems[*]}]="$(rtable)"
@@ -170,7 +175,7 @@ function userchar {
 	typeset chr="#"
 
 	if [ $USER != "root" ]; then
-		chr="$"
+		chr="|"
 	fi
 
 	if ! echo TERM | grep -q 256color; then
@@ -188,6 +193,7 @@ $(color 00 $(rgb 1 1 2) "$(userchar)") '
 # aliases {{{
 RSYNC_COMMON='rsync -hPr'
 # alias rm='rm -rf'
+alias sudo=doas
 alias cp=$RSYNC_COMMON
 alias xmv="$RSYNC_COMMON --remove-source-files --delete-delay"
 alias rsync=$RSYNC_COMMON
@@ -195,14 +201,20 @@ alias ..='cd ..'
 alias ls='ls -F'
 alias sudo='sudo -E'
 alias m=mimehandler
+alias cvs='cvs -q'
 if [ "`uname`" == "OpenBSD" ]; then
-	alias top='top -HSs1'
+	alias top='top -CHSs1'
+	alias watch=iwatch
 fi
 function dtop {
 	typeset container=$1
 	shift
 	docker exec -it "$container" sh -c "env TERM=vt220 top $@"
 }
+alias dadjoke='curl https://icanhazdadjoke.com; echo'
+if type nvim >/dev/null; then
+	alias vim=nvim
+fi
 # }}}
 
 # history {{{
@@ -233,7 +245,8 @@ export BROWSER=$HOME/bin/mimehandler
 if [ "$TERM" == "vt220" ]; then
 	export EDITOR="/usr/bin/vi"
 else
-	export EDITOR="vim"
+	# export EDITOR="vim"
+	export EDITOR="/usr/bin/vi"
 fi
 export FCEDIT=$EDITOR
 
@@ -263,13 +276,14 @@ export MAVEN_OPTS='-Xmx1048m -XX:MaxPermSize=512m'
 
 export LANG=en_US.UTF-8
 
-export GUILE_LOAD_PATH="...:${HOME}/.guile"
-# }}}
+export GPG_TTY=$(tty)
 
-# perl stuff
-if [ -e ${HOME}/perl5 ]; then
-	eval $(perl -I ${HOME}/perl5/lib/perl5 -Mlocal::lib)
+export GUILE_LOAD_PATH="...:${HOME}/.guile"
+
+if [ -e ~/perl5 ]; then
+	eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
 fi
+# }}}
 
 # shell options {{{
 set -o emacs
@@ -284,3 +298,26 @@ if [ "`uname`" = "OpenBSD" ]; then
 	stty status ^T
 fi
 # ulimit -c 0
+
+# Completions
+set -A complete_kill_1 -- -9 -HUP -INFO -KILL -TERM
+
+set -A complete_vmctl_1 -- console load reload start stop reset status
+set -A complete_vmctl_2 -- $(vmctl status 2>/dev/null | awk '!/NAME/{print $NF}')
+
+set -A complete_mtr -- heise.de unobtanium.de 8.8.8.8 8.8.4.4
+set -A complete_ping -- heise.de unobtanium.de 8.8.8.8 8.8.4.4
+
+function gen_complete_ifconfig {
+	# Devices
+	ifconfig | grep '^[a-z]' | cut -d: -f1
+
+	# Groups
+	ifconfig | grep 'groups: ' | cut -d: -f2 | tr ' ' \\n | sort -u | tail -n +2
+}
+set -A complete_ifconfig_1 -- $(gen_complete_ifconfig)
+set -A complete_ifconfig_2 -- up down inet nwid create
+
+set -A complete_doas -- ifconfig route vi kill dhclient
+
+set -A complete_git_1 -- $(find /usr/local/libexec/git -type f | xargs -n1 basename | grep -v '^git$' | sed -e 's/^git-//')

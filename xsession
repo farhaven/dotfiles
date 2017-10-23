@@ -19,6 +19,7 @@ done &
 
 hy ~/sourcecode/stats/timestamps.hy &
 
+compton -b
 xsettingsd &
 for d in /usr/local/lib/X11/fonts/*; do
 	xset +fp $d
@@ -33,34 +34,32 @@ synclient TapButton1=1
 synclient TapButton2=3
 synclient TapButton3=2
 synclient VertScrollDelta=-100
+synclient HorizScrollDelta=-100
+synclient HorizTwoFingerScroll=1
 synclient LockedDrags=1
 synclient LockedDragTimeout=2500
+
+keynav &
+
+mpd
 
 xrdb -load ~/.Xdefaults
 setxkbmap us intl-unicode
 xmodmap ~/.xmodmap
 xhost +localhost
-
-# stalonetray --geometry 1x1-0-0 --grow-gravity W &
 autocutsel -fork
+
 xscreensaver &
-# compton -b
 dunst -follow keyboard -geometry 0x5-0+16 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
-# redshift-gtk &
-# sct > /dev/null &
-# (while sleep 5; do status; done | dzen2 -p -ta r -e 'onstart=lower' -fn "PragmataPro for Powerline:size=9") &
 (while sleep 5; do xsetroot -name "`status`"; done) &
 
-while sleep 1; do
-	( echo "\tGregor\n--\n";
-	fortune -sa) > ~/.signature
-done &
+# st -c mutt -e mutt &
 
-st -c mutt -e mutt &
-
-tkremind &
-# firefox &
 chrome &
+
+# QSyncthingTray &
+
+(cd ~/projects/powersnap; sh powersnap.sh 2>/dev/null) &
 
 wmname LG3D
 
@@ -70,7 +69,4 @@ while true; do
 	else
 		dwm-gbe
 	fi
-	# twm-tweaked
-	# fvwm
-	sleep 1
 done
