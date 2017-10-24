@@ -35,6 +35,8 @@ set hlsearch
 set hidden
 set enc=UTF-8
 
+set dir=/tmp
+
 set textwidth=132
 set colorcolumn=+1
 set number
@@ -104,7 +106,9 @@ nnoremap <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
   \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
   \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-exec "set listchars=tab:>\uB7,trail:\uB7,nbsp:~"
+" exec "set listchars=tab:>\uB7,trail:\uB7,nbsp:~"
+" exec "set listchars=tab:>\uB7,trail:\uB7,nbsp:~"
+exec "set listchars=tab:>\u2219,trail:\u2219,nbsp:~"
 set list
 
 " let g:stop_autocomplete=0
@@ -145,6 +149,9 @@ augroup vimrc_autocmd
 
 	autocmd bufenter,bufread /usr/src/** setlocal sw=8
 	autocmd bufenter,bufread /usr/src/** setlocal ts=8
+
+	autocmd bufenter,bufread /usr/ports/** setlocal ts=8
+	autocmd bufenter,bufread /usr/ports/** setlocal sw=8
 
 	autocmd filetype yaml setlocal et
 	autocmd filetype yaml setlocal sw=2
@@ -188,16 +195,6 @@ let g:tex_flavor='latex'
 "" TOhtml
 let g:html_ignore_folding=1
 let g:html_line_ids=1
-
-"" OCaml
-let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
-
-augroup ocaml
-	autocmd!
-	autocmd FileType ocaml set expandtab
-augroup END
 
 "" VimWiki
 let g:vimwiki_list = [{'path': '~/vimwiki'}]
