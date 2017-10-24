@@ -170,7 +170,7 @@ function userchar {
 	typeset chr="#"
 
 	if [ $USER != "root" ]; then
-		chr="$"
+		chr="|"
 	fi
 
 	if ! echo TERM | grep -q 256color; then
