@@ -60,7 +60,6 @@ set ttyfast
 
 " set mouse=a
 set mouse=rn
-set ttymouse=sgr
 
 " set background=dark
 set background=light
