@@ -51,9 +51,10 @@ autocutsel -fork
 
 xscreensaver &
 dunst -follow keyboard -geometry 0x5-0+16 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
+xsetroot -name "`status`"
 (while sleep 5; do xsetroot -name "`status`"; done) &
 
-# st -c mutt -e mutt &
+st -c mutt -e mutt &
 
 chrome &
 
