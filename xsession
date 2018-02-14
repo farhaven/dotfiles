@@ -21,7 +21,7 @@ hy ~/sourcecode/stats/timestamps.hy &
 
 compton -b
 xsettingsd &
-for d in /usr/local/lib/X11/fonts/*; do
+for d in /usr/local/share/fonts/mscorefonts /usr/local/lib/X11/fonts/*; do
 	xset +fp $d
 done
 xset b off
