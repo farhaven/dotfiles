@@ -249,8 +249,7 @@ export BROWSER=$HOME/bin/mimehandler
 if [ "$TERM" == "vt220" ]; then
 	export EDITOR="/usr/bin/vi"
 else
-	# export EDITOR="vim"
-	export EDITOR="/usr/bin/vi"
+	export EDITOR="nvim"
 fi
 export FCEDIT=$EDITOR
 
