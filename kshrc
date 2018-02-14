@@ -286,6 +286,11 @@ export GUILE_LOAD_PATH="...:${HOME}/.guile"
 if [ -e ~/perl5 ]; then
 	eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
 fi
+
+# Fool XDG applications into not creating Downloads/Desktops/Documents folders
+XDG_DOWNLOAD_DIR="${HOME}/downloads"
+XDG_DESKTOP_DIR="${HOME}/.cache/Desktop"
+XDG_DOCUMENTS_DIR="${HOME}"
 # }}}
 
 # shell options {{{
