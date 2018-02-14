@@ -78,7 +78,10 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
 nnoremap <F2> :w<cr>:Dispatch<cr>
-nnoremap <F3> :w<cr>:!exctags -R --sort=yes --fields=+iaS --extra=+q .<cr>
+nnoremap <F3> :w !translate -no-ansi<cr>
+vnoremap <F3> :w !translate -no-ansi<cr>
+nnoremap <F4> :!translate -b -no-ansi<cr>
+vnoremap <F4> :!translate -b -no-ansi<cr>
 nnoremap <F5> :cprevious<cr>
 nnoremap <F6> :cnext<cr>
 
@@ -103,6 +106,7 @@ nnoremap <F11> :setlocal spell spelllang=<cr>
 " exec "set listchars=tab:>\uB7,trail:\uB7,nbsp:~"
 exec "set listchars=tab:>\u2219,trail:\u2219,nbsp:~"
 set list
+
 
 " let g:stop_autocomplete=0
 " function! BetterComplete(type)
