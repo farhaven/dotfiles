@@ -17,7 +17,7 @@ while true; do
 	sleep $((60 * 120))
 done &
 
-hy ~/sourcecode/stats/timestamps.hy &
+# hy ~/sourcecode/stats/timestamps.hy &
 
 compton -b
 xsettingsd &
@@ -39,9 +39,9 @@ synclient HorizTwoFingerScroll=1
 synclient LockedDrags=1
 synclient LockedDragTimeout=2500
 
-keynav &
+# keynav &
 
-mpd
+# mpd
 
 xrdb -load ~/.Xdefaults
 setxkbmap us intl-unicode
@@ -60,7 +60,7 @@ chrome &
 
 # QSyncthingTray &
 
-(cd ~/projects/powersnap; sh powersnap.sh 2>/dev/null) &
+# (cd ~/projects/powersnap; sh powersnap.sh 2>/dev/null) &
 
 wmname LG3D
 
