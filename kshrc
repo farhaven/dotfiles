@@ -14,7 +14,11 @@ is_scm_dir() {
 scm_branch() {
 	if is_scm_dir git $(pwd); then
 		branch=$(git branch | grep -e '^\*' | cut -d ' ' -f 2-)
-		echo "(git)(${branch})"
+		incoming=$(git branch --no-merged 2>/dev/null | wc -l | tr -dc '0-9')
+		echo -n "(git)(${branch})"
+		if [[ $incoming != 0 ]]; then
+			echo "(inc:$incoming)"
+		fi
 		return 0
 	fi
 
