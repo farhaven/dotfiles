@@ -1,0 +1,147 @@
+# {{{ misc settings
+# set editor="/usr/bin/vi"
+# set editor="edit"
+set editor="rlwrap -pgreen ed"
+set nm_default_uri="notmuch:///home/gbe/Mail"
+set nm_query_type=threads
+set nm_record=yes
+set nm_record_tags="-inbox,replied"
+set virtual_spoolfile=yes
+virtual-mailboxes \
+	"Unread"				"notmuch://?query=tag:unread and not (tag:spam or tag:metzdowd or tag:tuhs or tag:fsmi)" \
+	"Flagged"			"notmuch://?query=tag:flagged" \
+	"Inbox"				"notmuch://?query=tag:inbox" \
+	"Familie"			"notmuch://?query=tag:familie" \
+	"Bank"				"notmuch://?query=tag:bank" \
+	"Metzdowd Crypto" "notmuch://?query=tag:crypto and tag:metzdowd" \
+	"CCC:C3PB"			"notmuch://?query=tag:ccc and tag:c3pb" \
+	"CCC:CCCAC"			"notmuch://?query=tag:ccc and tag:ac" \
+	"CCC:Intern/Erfa"	"notmuch://?query=tag:ccc and (tag:intern or tag:erfa) and not (tag:c3pb or tag:ac)" \
+	"DN42"				"notmuch://?query=tag:dn42" \
+	"Cron"				"notmuch://?query=tag:cron" \
+	"UPB:FSMI"			"notmuch://?query=tag:fsmi and not (tag:sempf or tag:rb)" \
+	"UPB:FSMI:RB"		"notmuch://?query=tag:fsmi and tag:rb" \
+	"RWTH:OSAK"			"notmuch://?query=tag:rwth and tag:osak" \
+	"Hackerboard"     "notmuch://?query=tag:hackerboard" \
+	"Hosting"			"notmuch://?query=tag:hetzner or tag:netcup or tag:hosting" \
+	"OpenBSD:CVS"		"notmuch://?query=tag:openbsd and tag:cvs" \
+	"OpenBSD:misc" 	"notmuch://?query=tag:openbsd and tag:misc" \
+	"OpenBSD:ports"	"notmuch://?query=tag:openbsd and tag:ports" \
+	"OpenBSD:tech"		"notmuch://?query=tag:openbsd and tag:tech" \
+	"OpenBSD:bugs"		"notmuch://?query=tag:openbsd and tag:bugs" \
+	"Suckless"			"notmuch://?query=tag:suckless and tag:dev" \
+	"THW"					"notmuch://?query=tag:thw" \
+	"Uni"					"notmuch://?query=tag:uni" \
+	"tuhs"				"notmuch://?query=tag:tuhs" \
+	"Spam"				"notmuch://?query=tag:spam" \
+	"Unsure"				"notmuch://?query=tag:unsure"
+
+set assumed_charset="utf-8"
+set realname="Gregor Best"
+set from="gbe@unobtanium.de"
+set use_from=yes
+set postpone=no
+set sendmail="msmtp -a unobtanium"
+set sort=threads
+set mailcap_path="~/.mailcap"
+set edit_headers
+set pager_stop
+set move=no
+set nomark_old
+set autoedit=yes
+set confirmappend=no
+set index_format="%4C %?H?[%H] ? %Z %{%b %d} %-15.15F %?M?(#%04M)&(%5c)? %s%* %?g?(%g)?"
+set pager_format="%C/%m: %-20.20n %s%* -- %?g?(%g)? - (%P)"
+set collapse_unread=yes
+set uncollapse_jump=yes
+set record="~/Mail/sent"
+# set header_cache="~/.mutt/cache/header"
+# folder-hook . "push <collapse-all>"
+
+alternates "^(gbe@(ring0\.de|unobtanium\.de)|gregor\.best@rwth-aachen.de)"
+# }}}
+# {{{ sane pager bindings
+bind pager <space> next-page
+bind pager b previous-page
+bind index,pager c vfolder-from-query
+bind index,pager C change-vfolder
+macro index I "<modify-labels>-inbox -unread\n"
+# macro index,pager d "<modify-labels>+deleted -unread\n"
+# macro index,pager u "<modify-labels>-deleted\n"
+bind index \` collapse-thread
+bind index ~ collapse-all
+bind index,pager l modify-labels
+bind index,pager D delete-thread
+bind index,pager  next-page
+bind index,pager  previous-page
+# }}}
+# {{{ bogofilter macros
+macro index,pager S "<pipe-entry>bogofilter -s" "mark message as Spam"
+macro index,pager H "<pipe-entry>bogofilter -n" "mark message as Ham"
+# }}}
+# {{{ headers
+ignore *
+unignore Subject
+unignore To
+unignore From:
+unignore Date
+unignore CC
+unignore List-Id
+hdr_order Date: From: Subject: To: CC: List-Id:
+# }}}
+# {{{ gpg setup
+# mutt uses by default PGP/GPG to sign/encrypt messages
+# if you want to use S-mime instead set the smime_is_default variable to yes
+
+set crypt_use_gpgme=yes
+set crypt_autosign
+set crypt_replysign
+
+set pgp_sign_as=0xc11b8df0
+
+# automatically encrypt outgoing messages
+# set crypt_autoencrypt=yes
+set crypt_replyencrypt=yes
+set crypt_replysignencrypted=yes
+set crypt_verify_sig=yes
+# }}}
+# {{{ autoview HTML messages
+set implicit_autoview
+auto_view text/html application/x-pgp-message
+# }}}
+# {{{ sidebar
+set sidebar_width=20
+set sidebar_visible=yes
+set sidebar_divider_char="|"
+set sidebar_format="%B%*  %?N?(%N)&%S?"
+set sidebar_delim_chars="/.:"
+#
+bind index,pager [ sidebar-prev
+bind index,pager ] sidebar-next
+bind index,pager \\ sidebar-open
+# }}}
+# colors
+color header     blue   default '.'
+color header     color88 default 'Subject:'
+color header	  color28 default 'Tags:'
+color body       color88 default '[_a-z\.\$A-Z0-9-]+@[a-zA-Z0-9\./\-]+'
+color body       color88 default '(https?|ftp)://[_a-zA-Z0-9\./~\-\#]+'
+color quoted     color28 default
+color signature  blue  default
+color attachment blue  default
+color status     black white
+# color tree       color28 default
+# color indicator  black        cyan
+# color status     default      blue
+# color tilde      blue         default
+# color normal     white        default
+color index blue default '~N'
+color sidebar_new blue default
+color sidebar_highlight color145 black
+color sidebar_indicator black white
+
+send2-hook . "set sendmail=\"msmtp -a unobtanium\""
+send2-hook "~f gregor.best@rwth-aachen.de" "set sendmail=\"msmtp -a rwth\""
+send2-hook "~f gregor@fsmpi.rwth-aachen.de" "set sendmail=\"msmtp -a fsmpi\""
+send2-hook "~f gbe@ring0.de" "set sendmail=\"msmtp -a ring0\""
+send2-hook "~f farhaven@aachen.ccc.de" "set sendmail=\"msmtp -a cccac\""
