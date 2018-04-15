@@ -246,11 +246,12 @@ export PATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
 export BROWSER=$HOME/bin/mimehandler
-if [ "$TERM" == "vt220" ]; then
-	export EDITOR="/usr/bin/vi"
-else
-	export EDITOR="nvim"
-fi
+# if [ "$TERM" == "vt220" ]; then
+# 	export EDITOR="/usr/bin/vi"
+# else
+# 	export EDITOR="nvim"
+# fi
+export EDITOR='rlwrap -pgreen -n -c ed -p">" '
 export FCEDIT=$EDITOR
 
 export DOOMWADDIR=~/doom/iwads
