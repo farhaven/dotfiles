@@ -51,7 +51,7 @@ function neatpwd {
 	echo -n "$d"
 }
 function rtable {
-	ps axo rtable,pid | grep " $$\$" | sed -Ee 's/ +//' -e 's/ .*//'
+	id -R
 }
 function python_venv {
 	if [ -z $VIRTUAL_ENV ]; then
