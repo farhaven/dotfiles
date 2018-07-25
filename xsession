@@ -39,10 +39,6 @@ synclient HorizTwoFingerScroll=1
 synclient LockedDrags=1
 synclient LockedDragTimeout=2500
 
-# keynav &
-
-# mpd
-
 xrdb -load ~/.Xdefaults
 setxkbmap us intl-unicode
 xmodmap ~/.xmodmap
