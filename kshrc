@@ -336,7 +336,7 @@ function gen_complete_ifconfig {
     ifconfig | awk '/^[a-z]/{ print $1 } /groups:/{ for(i=2; i<=NF; i++) { print $i }}' | tr -d : | sort -u
 }
 set -A complete_ifconfig_1 -- $(gen_complete_ifconfig)
-set -A complete_ifconfig_2 -- up down inet nwid create
+set -A complete_ifconfig_2 -- up down inet nwid create scan join
 
 set -A complete_doas -- ifconfig route vi kill dhclient
 
