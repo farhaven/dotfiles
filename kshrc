@@ -285,7 +285,7 @@ if which opam 2>/dev/null >/dev/null; then
 	eval `opam config env`
 fi
 
-export LESS='-RIMS'
+export LESS='-RIMS -X -F'
 
 export PYTHONPATH=~/sourcecode/HyREPL
 export VIRTUAL_ENV_DISABLE_PROMPT=yes
