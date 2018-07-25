@@ -56,7 +56,7 @@ chrome &
 
 emacs --daemon &
 
-# (cd ~/projects/powersnap; sh powersnap.sh 2>/dev/null) &
+QSyncthingTray &
 
 wmname LG3D
 
