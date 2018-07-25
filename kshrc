@@ -59,6 +59,12 @@ function python_venv {
 	fi
 	echo -n $(basename "$VIRTUAL_ENV")
 }
+function port_flavor {
+	if [ -z $FLAVOR ]; then
+		return
+	fi
+	echo -n "$FLAVOR"
+}
 function color {
 	if [ "$TERM" == "vt100" ]; then
 		shift 2
@@ -122,6 +128,7 @@ function prompt {
 
 	typeset branch=$(scm_branch)
 	typeset venv=$(python_venv)
+	typeset flavor=$(port_flavor)
 
 	oldifs=$IFS
 	IFS="
@@ -150,6 +157,13 @@ function prompt {
 		elems[${#elems[*]}]="$(rtable)"
 		elems[${#elems[*]}]=$(rgb 3 1 0)
 		elems[${#elems[*]}]=" "
+
+		if [ ! -z $flavor ]; then
+			elems[${#elems[*]}]=$(rgb 2 2 2)
+			elems[${#elems[*]}]="$flavor"
+			elems[${#elems[*]}]=$(rgb 1 1 1)
+			elems[${#elems[*]}]=" "
+		fi
 	fi
 
 	if [ ! -z $venv ]; then
