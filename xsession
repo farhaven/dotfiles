@@ -58,7 +58,7 @@ st -c mutt -e mutt &
 
 chrome &
 
-# QSyncthingTray &
+emacs --daemon &
 
 # (cd ~/projects/powersnap; sh powersnap.sh 2>/dev/null) &
 
