@@ -220,6 +220,7 @@ alias ls='ls -F'
 alias sudo='sudo -E'
 alias m=mimehandler
 alias cvs='cvs -q'
+alias ed='rlwrap -pgreen -n -c ed -p">" '
 if [ "`uname`" == "OpenBSD" ]; then
 	alias top='top -CHSs1'
 	alias watch=iwatch
@@ -233,6 +234,7 @@ alias dadjoke='curl https://icanhazdadjoke.com; echo'
 if type nvim >/dev/null; then
 	alias vim=nvim
 fi
+alias ec="emacsclient -c"
 # }}}
 
 # history {{{
