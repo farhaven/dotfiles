@@ -334,11 +334,7 @@ set -A complete_mtr -- heise.de unobtanium.de 8.8.8.8 8.8.4.4
 set -A complete_ping -- heise.de unobtanium.de 8.8.8.8 8.8.4.4
 
 function gen_complete_ifconfig {
-	# Devices
-	ifconfig | grep '^[a-z]' | cut -d: -f1
-
-	# Groups
-	ifconfig | grep 'groups: ' | cut -d: -f2 | tr ' ' \\n | sort -u | tail -n +2
+    ifconfig | awk '/^[a-z]/{ print $1 } /groups:/{ for(i=2; i<=NF; i++) { print $i }}' | tr -d : | sort -u
 }
 set -A complete_ifconfig_1 -- $(gen_complete_ifconfig)
 set -A complete_ifconfig_2 -- up down inet nwid create
