@@ -17,8 +17,6 @@ while true; do
 	sleep $((60 * 120))
 done &
 
-# hy ~/sourcecode/stats/timestamps.hy &
-
 compton -b
 xsettingsd &
 for d in /usr/local/share/fonts/mscorefonts /usr/local/lib/X11/fonts/*; do
