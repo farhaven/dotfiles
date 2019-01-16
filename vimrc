@@ -2,16 +2,7 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 
 let mapleader=" "
 let g:pathogen_disabled = []
-call add(g:pathogen_disabled, "pycalc")
-call add(g:pathogen_disabled, "paredit.vim")
-call add(g:pathogen_disabled, "jedi-vim")
-call add(g:pathogen_disabled, "ocp-indent-vim")
-call add(g:pathogen_disabled, "rcs-vim")
-call add(g:pathogen_disabled, "slimux")
-call add(g:pathogen_disabled, "slimv")
-call add(g:pathogen_disabled, "vim-dotoo")
-call add(g:pathogen_disabled, "vim-kerboscript")
-call add(g:pathogen_disabled, "vim-ondemandhighlight")
+" call add(g:pathogen_disabled, "vim-ondemandhighlight")
 execute pathogen#infect()
 
 set nocompatible
@@ -26,11 +17,6 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
-
-" set foldmethod=indent
-" set foldmethod=syntax
-" set foldlevelstart=2
-" set foldminlines=1
 
 set hidden
 set enc=UTF-8
@@ -103,35 +89,12 @@ nnoremap <F9> :setlocal spell spelllang=de<cr>
 nnoremap <F10> :setlocal spell spelllang=en_us<cr>
 nnoremap <F11> :setlocal spell spelllang=<cr>
 
-" exec "set listchars=tab:>\uB7,trail:\uB7,nbsp:~"
 exec "set listchars=tab:>\u2219,trail:\u2219,nbsp:~"
 set list
 
-
-" let g:stop_autocomplete=0
-" function! BetterComplete(type)
-" 	if a:type == 'omni'
-" 		if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
-" 			let g:stop_autocomplete=1
-" 			return "\<TAB>"
-" 		elseif !pumvisible() && !&omnifunc
-" 			return "\<C-X>\<C-O>\<C-P>"
-" 		endif
-" 	elseif a:type == 'keyword' && !pumvisible() && !g:stop_autocomplete
-" 		return "\<C-X>\<C-N>\<C-P>"
-" 	elseif a:type == 'next'
-" 		if g:stop_autocomplete
-" 			let g:stop_autocomplete=0
-" 		else
-" 			return "\<C-n>"
-" 		endif
-" 	endif
-" 	return ''
-" endfunction
 set completeopt=menuone,menu,longest,preview
 set complete=.,w,b,u,t,i ",kspell
 set omnifunc=syntaxcomplete#Complete
-" inoremap <silent><TAB> <C-R>=BetterComplete('omni')<CR><C-R>=BetterComplete('keyword')<CR><C-R>=BetterComplete('next')<CR>
 
 augroup vimrc_autocmd
 	autocmd!
@@ -149,6 +112,14 @@ augroup vimrc_autocmd
 
 	autocmd bufenter,bufread /usr/ports/** setlocal ts=8
 	autocmd bufenter,bufread /usr/ports/** setlocal sw=8
+
+	autocmd bufenter,bufread *.ledger setlocal ts=8
+	autocmd bufenter,bufread *.ledger setlocal sw=2
+	autocmd bufenter,bufread *.ledger setlocal et
+
+	autocmd bufenter,bufread *.rst setlocal ts=4
+	autocmd bufenter,bufread *.rst setlocal sw=4
+	autocmd bufenter,bufread *.rst setlocal et
 
 	autocmd filetype yaml setlocal et
 	autocmd filetype yaml setlocal sw=2
@@ -169,8 +140,6 @@ augroup vimrc_autocmd
 	au Syntax * RainbowParenthesesLoadRound
 	au Syntax * RainbowParenthesesLoadSquare
 	au Syntax * RainbowParenthesesLoadBraces
-	" These would be nice for C++11, but crap up on < and > for comparisons
-	" au Syntax * RainbowParenthesesLoadChevrons
 augroup END
 
 let g:netrw_liststyle=3
@@ -179,31 +148,6 @@ let g:netrw_liststyle=3
 "" TOhtml
 let g:html_ignore_folding=1
 let g:html_line_ids=1
-
-"" VimWiki
-let g:vimwiki_list = [{'path': '~/vimwiki'}]
-let g:vimwiki_hl_headers=1
-let g:vimwiki_folding='expr'
-function! VimwikiLinkHandler(link)
-	let link = a:link
-	if link =~ "http://" || link =~ "https://" || link =~ "file://"
-	else
-		return 0
-	endif
-
-	let browser="~/bin/mimehandler"
-	echom link
-	try
-		call system(browser .' "'. link . '" &')
-		return 1
-	catch
-		echom "Failed to launch browser"
-	endtry
-	return 0
-endfunction
-
-"" Fireplace and other Clojure stuff
-let g:clojure_align_multiline_strings = 1
 
 "" Airline
 let g:airline#extensions#whitespace#enabled = 0
@@ -233,12 +177,6 @@ let g:rbpt_colorpairs = [
 
 "" Tmuxline
 let g:tmuxline_powerline_separators = 1
-
-"" Slimv
-let g:slimv_swank_cmd = '!tmux new-window -d -n SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
-
-"" Vimux
-map <Leader>vp :VimuxPromptCommand<CR>
 
 "" Fugitive
 map <Leader>g :Gstatus<CR>

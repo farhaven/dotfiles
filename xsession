@@ -9,7 +9,7 @@ eval $(gpg-agent -s --daemon --pinentry-program `which pinentry-gtk-2`)
 
 env | grep ^SSH > /tmp/ssh-agent
 
-mount | grep -q "^mfs.*\.cache" || doas mount -t mfs -o -s300M swap ~/.cache
+mount | grep -q "^mfs.*\.cache" || doas mount -t mfs -o -s2G swap ~/.cache
 
 # change the desktop wallpaper every two hours
 while true; do
@@ -20,14 +20,17 @@ done &
 compton -b
 xsettingsd &
 for d in /usr/local/share/fonts/mscorefonts /usr/local/lib/X11/fonts/*; do
-	xset +fp $d
+	xset +fp "$d"
 done
 xset b off
 xset fp rehash
-xset r rate 240 20
+# xset r rate 240 20
 xset dpms 120 180 240
 
 syndaemon -i 0.2 -d
+synclient PalmDetect=1
+synclient PalmMinWidth=4
+synclient PalmMinZ=100
 synclient TapButton1=1
 synclient TapButton2=3
 synclient TapButton3=2
@@ -41,27 +44,25 @@ xrdb -load ~/.Xdefaults
 setxkbmap us intl-unicode
 xmodmap ~/.xmodmap
 xhost +localhost
-autocutsel -fork
+# autocutsel -fork
 
 xscreensaver &
 dunst -follow keyboard -geometry 0x5-0+16 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
-xsetroot -name "`status`"
-(while sleep 5; do xsetroot -name "`status`"; done) &
+xsetroot -name "$(status)"
+(while sleep 5; do xsetroot -name "$(status)"; done) &
 
-st -c mutt -e mutt &
-
+st -c mutt -e neomutt &
 chrome &
 
-emacs --daemon &
-
-QSyncthingTray &
+(sleep 5; QSyncthingTray) &
 
 wmname LG3D
 
 while true; do
 	if [ -O /tmp/wm.gbe ]; then
-		`cat /tmp/wm.gbe`
+      # shellcheck disable=SC2091
+      $(cat /tmp/wm.gbe)
 	else
-		dwm-gbe
+      dwm-gbe
 	fi
 done

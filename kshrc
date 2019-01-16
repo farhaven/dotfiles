@@ -8,7 +8,8 @@ is_scm_dir() {
 	elif [ "$2" == "/" ]; then
 		return 1
 	fi
-	is_scm_dir $1 $(dirname "$2")
+	d=$(dirname "$2")
+	is_scm_dir "$1" "$d"
 	return $?
 }
 scm_branch() {
@@ -231,15 +232,12 @@ function dtop {
 	docker exec -it "$container" sh -c "env TERM=vt220 top $@"
 }
 alias dadjoke='curl https://icanhazdadjoke.com; echo'
-if type nvim >/dev/null; then
-	alias vim=nvim
-fi
-alias ec="emacsclient -c"
 # }}}
 
 # history {{{
 export HISTSIZE=200000
 export HISTFILE=~/.history
+export HISTCONTROL="ignoredups"
 # }}}
 
 # env vars {{{
@@ -258,15 +256,12 @@ PATH=${PATH}:/usr/games
 PATH=${PATH}:/usr/local/jdk-1.8.0/bin
 PATH=${PATH}:${GOPATH}/bin
 PATH=${PATH}:/Users/gbe/Library/Android/sdk/platform-tools
+PATH=${PATH}:${HOME}/.cargo/bin
 export PATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
 export BROWSER=$HOME/bin/mimehandler
-if [ "$TERM" == "vt220" ]; then
-	export EDITOR="/usr/bin/vi"
-else
-	export EDITOR="emacsclient -c"
-fi
+export EDITOR="/usr/local/bin/nvim"
 export FCEDIT=$EDITOR
 
 export DOOMWADDIR=~/doom/iwads

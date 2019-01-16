@@ -97,3 +97,6 @@
 [submodule "vim/bundle/ansible-vim"]
 	path = vim/bundle/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim
+[submodule "vim/bundle/rust.vim"]
+	path = vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git

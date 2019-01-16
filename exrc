@@ -20,6 +20,8 @@ map [12~ :w:!make
 " <F3>: interactive git commit
 map OR :w:!git commit -s --interactive
 
+map = :%!expand -t 4
+
 map gg 1G
 map gq {!}par 72qj}
 map gQ {!}par 72qj
