@@ -140,6 +140,8 @@ augroup vimrc_autocmd
 	au Syntax * RainbowParenthesesLoadRound
 	au Syntax * RainbowParenthesesLoadSquare
 	au Syntax * RainbowParenthesesLoadBraces
+
+	au FileType qf setlocal nolist
 augroup END
 
 let g:netrw_liststyle=3
