@@ -43,9 +43,6 @@
 [submodule "vim/bundle/vim-cute-python"]
 	path = vim/bundle/vim-cute-python
 	url = https://github.com/ehamberg/vim-cute-python.git
-[submodule "vim/bundle/vim-sexp"]
-	path = vim/bundle/vim-sexp
-	url = https://github.com/guns/vim-sexp.git
 [submodule "vim/bundle/vim-etherpad"]
 	path = vim/bundle/vim-etherpad
 	url = https://github.com/guyzmo/vim-etherpad.git
@@ -58,9 +55,6 @@
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/bundle/vim-rfc"]
-	path = vim/bundle/vim-rfc
-	url = git@github.com:mhinz/vim-rfc.git
 [submodule "vim/bundle/openscad.vim"]
 	path = vim/bundle/openscad.vim
 	url = https://github.com/vim-scripts/openscad.vim
