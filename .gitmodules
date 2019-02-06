@@ -1,12 +1,6 @@
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
-[submodule "vim/bundle/jedi-vim"]
-	path = vim/bundle/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim.git
-[submodule "vim/bundle/ocp-indent-vim"]
-	path = vim/bundle/ocp-indent-vim
-	url = https://github.com/def-lkb/ocp-indent-vim
 [submodule "vim/bundle/paredit.vim"]
 	path = vim/bundle/paredit.vim
 	url = https://github.com/vim-scripts/paredit.vim
@@ -34,24 +28,12 @@
 [submodule "vim/bundle/vim-endwise"]
 	path = vim/bundle/vim-endwise
 	url = https://github.com/tpope/vim-endwise.git
-[submodule "vim/bundle/vim-fireplace"]
-	path = vim/bundle/vim-fireplace
-	url = git://github.com/tpope/vim-fireplace.git
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/vim-leiningen"]
-	path = vim/bundle/vim-leiningen
-	url = https://github.com/tpope/vim-leiningen.git
 [submodule "vim/bundle/vimwiki"]
 	path = vim/bundle/vimwiki
 	url = git://github.com/vim-scripts/vimwiki.git
-[submodule "vim/bundle/vimux"]
-	path = vim/bundle/vimux
-	url = https://github.com/benmills/vimux.git
-[submodule "vim/bundle/vim-tmux-navigator"]
-	path = vim/bundle/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator.git
 [submodule "vim/bundle/vim-indent-object"]
 	path = vim/bundle/vim-indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
@@ -70,9 +52,6 @@
 [submodule "vim/bundle/vim-monochrome"]
 	path = vim/bundle/vim-monochrome
 	url = https://github.com/fxn/vim-monochrome.git
-[submodule "vim/bundle/slimux"]
-	path = vim/bundle/slimux
-	url = https://github.com/epeli/slimux
 [submodule "vim/bundle/wildfire.vim"]
 	path = vim/bundle/wildfire.vim
 	url = https://github.com/gcmt/wildfire.vim.git
@@ -82,12 +61,6 @@
 [submodule "vim/bundle/vim-rfc"]
 	path = vim/bundle/vim-rfc
 	url = git@github.com:mhinz/vim-rfc.git
-[submodule "vim/bundle/vim-dotoo"]
-	path = vim/bundle/vim-dotoo
-	url = http://github.com/dhruvasagar/vim-dotoo
-[submodule "vim/bundle/slimv"]
-	path = vim/bundle/slimv
-	url = https://github.com/kovisoft/slimv
 [submodule "vim/bundle/openscad.vim"]
 	path = vim/bundle/openscad.vim
 	url = https://github.com/vim-scripts/openscad.vim
@@ -103,3 +76,9 @@
 [submodule "vim/bundle/neomake"]
 	path = vim/bundle/neomake
 	url = https://github.com/neomake/neomake
+[submodule "vim/bundle/unimpaired"]
+	path = vim/bundle/unimpaired
+	url = https://tpope.io/vim/unimpaired.git
+[submodule "vim/bundle/vim-jinja"]
+	path = vim/bundle/vim-jinja
+	url = https://github.com/lepture/vim-jinja.git

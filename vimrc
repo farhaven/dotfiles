@@ -13,6 +13,7 @@ filetype indent on
 syntax on
 set wildmenu
 
+set inccommand=nosplit  " Show preview for search/replace
 set incsearch
 set ignorecase
 set smartcase
@@ -64,6 +65,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
 nnoremap <F2> :w<cr>:Dispatch<cr>
+nnoremap M :w<cr>:Dispatch make<cr>
 nnoremap <F3> :w !translate -no-ansi<cr>
 vnoremap <F3> :w !translate -no-ansi<cr>
 nnoremap <F4> :!translate -b -no-ansi<cr>
@@ -107,8 +109,8 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread *SCons* setfiletype python
 	autocmd bufenter,bufread *.asd setfiletype lisp
 
-	autocmd bufenter,bufread /usr/src/** setlocal ts=8
 	autocmd bufenter,bufread /usr/src/** setlocal sw=8
+	autocmd bufenter,bufread /usr/src/** setlocal ts=8
 
 	autocmd bufenter,bufread /usr/ports/** setlocal ts=8
 	autocmd bufenter,bufread /usr/ports/** setlocal sw=8
@@ -129,12 +131,23 @@ augroup vimrc_autocmd
 	autocmd FileType python setlocal sw=4
 	autocmd FileType python setlocal ts=4
 
+	autocmd FileType javascript setlocal et
+	autocmd FileType javascript setlocal sw=2
+	autocmd FileType javascript setlocal ts=2
+
+	autocmd FileType scss setlocal et
+	autocmd FileType scss setlocal sw=2
+	autocmd FileType scss setlocal ts=2
+
 	autocmd FileType mail setlocal tw=72
 
 	autocmd bufenter,bufread *Makefile* setlocal noet
 
-	autocmd FileType tex :NoMatchParen
+	au FileType tex :NoMatchParen
 	au FileType tex setlocal nocursorline
+	au FileType tex syn region texZone start="\\begin{lstlisting}" end="\\end{lstlisting}\|%stopzone\>"
+	au FileType tex syn region texZone  start="\\lstinputlisting" end="{\s*[a-zA-Z/.0-9_^]\+\s*}"
+	au FileType tex syn match texInputFile "\\lstinline\s*\(\[.*\]\)\={.\{-}}" contains=texStatement,texInputCurlies,texInputFileOpt
 
 	au VimEnter * RainbowParenthesesToggle
 	au Syntax * RainbowParenthesesLoadRound
@@ -142,11 +155,17 @@ augroup vimrc_autocmd
 	au Syntax * RainbowParenthesesLoadBraces
 
 	au FileType qf setlocal nolist
+	au FileType qf map <buffer> q :close<CR>
 augroup END
 
 let g:netrw_liststyle=3
 
 """ From here on, only plugin and language specific settings
+"" Neomake
+call neomake#configure#automake('nrwi', 500)
+
+"" Latex
+let g:tex_flavor='latex'
 "" TOhtml
 let g:html_ignore_folding=1
 let g:html_line_ids=1
@@ -195,3 +214,11 @@ augroup END
 
 "" Syntax highlighting for sh files
 let g:is_kornshell=1
+
+"" Django
+augroup django_autocmd
+	autocmd FileType htmldjango syn clear djangoError
+	autocmd FileType htmldjango setlocal ts=2
+	autocmd FileType htmldjango setlocal sw=2
+	autocmd FileType htmldjango setlocal et
+augroup END

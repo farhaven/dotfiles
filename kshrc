@@ -15,10 +15,11 @@ is_scm_dir() {
 scm_branch() {
 	if is_scm_dir git $(pwd); then
 		branch=$(git branch | grep -e '^\*' | cut -d ' ' -f 2-)
-		incoming=$(git branch --no-merged 2>/dev/null | wc -l | tr -dc '0-9')
-		echo -n "(git)(${branch})"
-		if [[ $incoming != 0 ]]; then
-			echo "(inc:$incoming)"
+		unmerged=$(git branch --no-merged 2>/dev/null | wc -l | tr -dc '0-9')
+		if [[ $unmerged != 0 ]]; then
+			echo "(git)(${branch})(inc:$unmerged)"
+		else
+			echo "(git)(${branch})"
 		fi
 		return 0
 	fi
@@ -212,10 +213,9 @@ $(color 00 $(rgb 1 1 2) "$(userchar)") '
 # aliases {{{
 RSYNC_COMMON='rsync -hPr'
 # alias rm='rm -rf'
-alias sudo=doas
-alias cp=$RSYNC_COMMON
+alias cp="$RSYNC_COMMON"
 alias xmv="$RSYNC_COMMON --remove-source-files --delete-delay"
-alias rsync=$RSYNC_COMMON
+alias rsync="$RSYNC_COMMON"
 alias ..='cd ..'
 alias ls='ls -F'
 alias sudo='sudo -E'
@@ -224,6 +224,7 @@ alias cvs='cvs -q'
 alias ed='rlwrap -pgreen -n -c ed -p">" '
 if [ "`uname`" == "OpenBSD" ]; then
 	alias top='top -CHSs1'
+	alias sudo=doas
 	alias watch=iwatch
 fi
 function dtop {
@@ -241,6 +242,8 @@ export HISTCONTROL="ignoredups"
 # }}}
 
 # env vars {{{
+# Rust
+source ${HOME}/.cargo/env
 LUA_PATH="${HOME}/.lua/?.lua;${HOME}/sourcecode/lunajson/src/?.lua;;"
 export LUA_PATH
 
@@ -249,7 +252,7 @@ export GOPATH
 
 PATH=${PATH}:"/Applications/VMware Fusion.app/Contents/Library"
 PATH=${HOME}/bin:/sbin:/usr/sbin:/usr/local/sbin
-PATH=${PATH}:/bin:/usr/bin:/usr/local/bin
+PATH=${PATH}:/usr/local/bin:/bin:/usr/bin
 PATH=${PATH}:/usr/X11R6/bin
 PATH=${PATH}:/usr/local/games
 PATH=${PATH}:/usr/games
@@ -257,11 +260,13 @@ PATH=${PATH}:/usr/local/jdk-1.8.0/bin
 PATH=${PATH}:${GOPATH}/bin
 PATH=${PATH}:/Users/gbe/Library/Android/sdk/platform-tools
 PATH=${PATH}:${HOME}/.cargo/bin
+PATH=${PATH}:/usr/local/texlive/2015/bin/universal-darwin
+PATH=${PATH}:/Library/Frameworks/Mono.framework/Commands/
 export PATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
 export BROWSER=$HOME/bin/mimehandler
-export EDITOR="/usr/local/bin/nvim"
+export EDITOR="nvim"
 export FCEDIT=$EDITOR
 
 export DOOMWADDIR=~/doom/iwads
@@ -280,7 +285,7 @@ if which opam 2>/dev/null >/dev/null; then
 	eval `opam config env`
 fi
 
-export LESS='-RIMS -X -F'
+export LESS='-RIMS -F -X'
 
 export PYTHONPATH=~/sourcecode/HyREPL
 export VIRTUAL_ENV_DISABLE_PROMPT=yes
@@ -293,6 +298,8 @@ export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
 
 export GUILE_LOAD_PATH="...:${HOME}/.guile"
+
+export GIT_SSL_CAINFO=/etc/ssl/certs.pem
 
 if [ -e ~/perl5 ]; then
 	eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
@@ -319,13 +326,13 @@ fi
 # ulimit -c 0
 
 # Completions
-set -A complete_kill_1 -- -9 -HUP -INFO -KILL -TERM
+# set -A complete_kill_1 -- -9 -HUP -INFO -KILL -TERM
 
-set -A complete_vmctl_1 -- console load reload start stop reset status
-set -A complete_vmctl_2 -- $(vmctl status 2>/dev/null | awk '!/NAME/{print $NF}')
+# set -A complete_vmctl_1 -- console load reload start stop reset status
+# set -A complete_vmctl_2 -- $(vmctl status 2>/dev/null | awk '!/NAME/{print $NF}')
 
-set -A complete_mtr -- heise.de unobtanium.de 8.8.8.8 8.8.4.4
-set -A complete_ping -- heise.de unobtanium.de 8.8.8.8 8.8.4.4
+# set -A complete_mtr -- heise.de unobtanium.de 8.8.8.8 8.8.4.4
+# set -A complete_ping -- heise.de unobtanium.de 8.8.8.8 8.8.4.4
 
 function gen_complete_ifconfig {
     ifconfig | awk '/^[a-z]/{ print $1 } /groups:/{ for(i=2; i<=NF; i++) { print $i }}' | tr -d : | sort -u
@@ -333,6 +340,6 @@ function gen_complete_ifconfig {
 set -A complete_ifconfig_1 -- $(gen_complete_ifconfig)
 set -A complete_ifconfig_2 -- up down inet nwid create scan join
 
-set -A complete_doas -- ifconfig route vi kill dhclient
+# set -A complete_doas -- ifconfig route vi kill dhclient
 
-set -A complete_git_1 -- $(find /usr/local/libexec/git -type f | xargs -n1 basename | grep -v '^git$' | sed -e 's/^git-//')
+# set -A complete_git_1 -- $(find /usr/local/libexec/git -type f 2>/dev/null | xargs -n1 basename | grep -v '^git$' | sed -e 's/^git-//')
