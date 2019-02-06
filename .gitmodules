@@ -94,3 +94,15 @@
 [submodule "vim/LaTeX-Box"]
 	path = vim/LaTeX-Box
 	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
+[submodule "vim/bundle/unimpaired"]
+	path = vim/bundle/unimpaired
+	url = https://tpope.io/vim/unimpaired.git
+[submodule "vim/bundle/neomake"]
+	path = vim/bundle/neomake
+	url = https://github.com/neomake/neomake
+[submodule "vim/bundle/denite"]
+	path = vim/bundle/denite
+	url = https://github.com/Shougo/denite.nvim
+[submodule "vim/bundle/vim-jinja"]
+	path = vim/bundle/vim-jinja
+	url = https://github.com/lepture/vim-jinja.git

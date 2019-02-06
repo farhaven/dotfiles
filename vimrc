@@ -22,6 +22,7 @@ filetype indent on
 syntax on
 set wildmenu
 
+set inccommand=nosplit  " Show preview for search/replace
 set incsearch
 set ignorecase
 set smartcase
@@ -184,11 +185,17 @@ augroup vimrc_autocmd
 	au Syntax * RainbowParenthesesLoadBraces
 	" These would be nice for C++11, but crap up on < and > for comparisons
 	" au Syntax * RainbowParenthesesLoadChevrons
+
+	au FileType qf setlocal nolist
+	au FileType qf map <buffer> q :close<CR>
 augroup END
 
 let g:netrw_liststyle=3
 
 """ From here on, only plugin and language specific settings
+"" Neomake
+call neomake#configure#automake('nrwi', 500)
+
 "" Latex
 let g:tex_flavor='latex'
 "" TOhtml
