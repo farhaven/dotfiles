@@ -220,3 +220,16 @@ augroup django_autocmd
 	autocmd FileType htmldjango setlocal sw=2
 	autocmd FileType htmldjango setlocal et
 augroup END
+
+"" Org-Mode
+" Indent body text after headings
+let g:org_indent=0                      " If this is on, adding new items to lists behaves weirdly
+let g:org_heading_shade_leading_stars=0 " Looks confusing if enabled
+let g:org_tag_column=100
+augroup org
+	autocmd FileType org setlocal ts=2
+	autocmd FileType org setlocal sw=2
+	autocmd FileType org setlocal tw=132
+
+	autocmd FileType org call SyntaxRange#Include("#+BEGIN_SRC sh", "#+END_SRC", "sh")
+augroup END
