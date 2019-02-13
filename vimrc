@@ -51,9 +51,6 @@ set mouse=rn
 
 " set background=dark
 set background=light
-set guifont=PragmataPro\ for\ Powerline\ 10
-set guioptions-=mTr
-set guioptions+=c
 set guicursor=a:blinkon0
 " colorscheme old
 colorscheme zellner
