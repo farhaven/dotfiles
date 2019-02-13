@@ -1,6 +1,7 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 
 let mapleader=" "
+let maplocalleader="\\"
 let g:pathogen_disabled = []
 " call add(g:pathogen_disabled, "vim-ondemandhighlight")
 execute pathogen#infect()
