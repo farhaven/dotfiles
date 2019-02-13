@@ -167,9 +167,6 @@ call neomake#configure#automake('nrwi', 500)
 
 "" Latex
 let g:tex_flavor='latex'
-"" TOhtml
-let g:html_ignore_folding=1
-let g:html_line_ids=1
 
 "" Airline
 let g:airline#extensions#whitespace#enabled = 0
