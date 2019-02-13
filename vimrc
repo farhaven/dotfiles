@@ -55,7 +55,8 @@ set guifont=PragmataPro\ for\ Powerline\ 10
 set guioptions-=mTr
 set guioptions+=c
 set guicursor=a:blinkon0
-colorscheme old
+" colorscheme old
+colorscheme zellner
 
 map j gj
 map k gk
