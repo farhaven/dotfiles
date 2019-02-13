@@ -198,7 +198,7 @@ let g:rbpt_colorpairs = [
 let g:tmuxline_powerline_separators = 1
 
 "" Fugitive
-map <Leader>g :Gstatus<CR>
+map <Leader>gs :Gstatus<CR>
 
 "" Hy
 let g:hy_enable_conceal = 1
