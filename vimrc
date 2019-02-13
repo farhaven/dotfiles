@@ -155,6 +155,8 @@ augroup vimrc_autocmd
 
 	au FileType qf setlocal nolist
 	au FileType qf map <buffer> q :close<CR>
+
+	au FileType help map <buffer> q :close<CR>
 augroup END
 
 let g:netrw_liststyle=3
