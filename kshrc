@@ -243,7 +243,9 @@ export HISTCONTROL="ignoredups"
 
 # env vars {{{
 # Rust
-source ${HOME}/.cargo/env
+if [[ -e ${HOME}/.cargo/env ]]; then
+	. ${HOME}/.cargo/env
+fi
 LUA_PATH="${HOME}/.lua/?.lua;${HOME}/sourcecode/lunajson/src/?.lua;;"
 export LUA_PATH
 
