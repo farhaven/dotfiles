@@ -70,9 +70,6 @@
 [submodule "vim/bundle/neomake"]
 	path = vim/bundle/neomake
 	url = https://github.com/neomake/neomake
-[submodule "vim/bundle/unimpaired"]
-	path = vim/bundle/unimpaired
-	url = https://tpope.io/vim/unimpaired.git
 [submodule "vim/bundle/vim-jinja"]
 	path = vim/bundle/vim-jinja
 	url = https://github.com/lepture/vim-jinja.git

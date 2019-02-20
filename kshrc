@@ -13,7 +13,7 @@ is_scm_dir() {
 	return $?
 }
 scm_branch() {
-	if is_scm_dir git $(pwd); then
+	if is_scm_dir git "$(pwd)"; then
 		branch=$(git branch | grep -e '^\*' | cut -d ' ' -f 2-)
 		unmerged=$(git branch --no-merged 2>/dev/null | wc -l | tr -dc '0-9')
 		if [[ $unmerged != 0 ]]; then
@@ -24,7 +24,7 @@ scm_branch() {
 		return 0
 	fi
 
-	if is_scm_dir hg $(pwd); then
+	if is_scm_dir hg "$(pwd)"; then
 		branch=$(hg branch)
 		echo "(hg)(${branch})"
 		return 0
@@ -37,7 +37,7 @@ scm_branch() {
 		return 0
 	fi
 
-	if is_scm_dir bzr $(pwd) ; then
+	if is_scm_dir bzr "$(pwd)"; then
 		branch=$(bzr log | grep '^rev' | head -n1 | cut -d' ' -f2)
 		echo "(bzr)(${branch})"
 		return 0
@@ -56,13 +56,13 @@ function rtable {
 	id -R
 }
 function python_venv {
-	if [ -z $VIRTUAL_ENV ]; then
+	if [ -z "$VIRTUAL_ENV" ]; then
 		return
 	fi
-	echo -n $(basename "$VIRTUAL_ENV")
+	echo -n "$(basename "$VIRTUAL_ENV")"
 }
 function port_flavor {
-	if [ -z $FLAVOR ]; then
+	if [ -z "$FLAVOR" ]; then
 		return
 	fi
 	echo -n "$FLAVOR"
@@ -76,10 +76,10 @@ function color {
 
 	# background, then foreground
 	echo -n ""
-	if [ $1 != "00" ]; then
+	if [ "$1" != "00" ]; then
 		echo -n "[48;5;${1}m"
 	fi
-	if [ $2 != "00" ]; then
+	if [ "$2" != "00" ]; then
 		echo -n "[38;5;${2}m"
 	fi
 	shift 2
@@ -91,7 +91,7 @@ function rgb {
 	echo -n $((($1 * 36) + ($2 * 6) + $3 + 16))
 }
 C_WHITE=$(rgb 5 5 5)
-C_BLACK=$(rgb 0 0 0)
+# C_BLACK=$(rgb 0 0 0)
 function airline {
 	typeset oldifs=$IFS
 	IFS="
@@ -99,19 +99,19 @@ function airline {
 	typeset cprev=
 	typeset orignum=$#
 	while [ $# -gt 0 ]; do
-		typeset num=$(($orignum - $#))
+		typeset num=$((orignum - $#))
 		typeset cnow=$1
 		typeset txt=$(echo "$2" | sed -Ee 's/^[[:blank:]]+//' -e 's/[[:blank:]]+$//')
 		if [ $num -gt 0 ]; then
-			color $cnow $cprev 
+			color "$cnow" "$cprev" 
 		fi
 
 		if [ "x$txt" != "x" ]; then
-			color $cnow $C_WHITE " $txt "
+			color "$cnow" "$C_WHITE" " $txt "
 		fi
 
 		if [ $# -lt 3 ]; then
-			color $C_WHITE $cnow 
+			color "$C_WHITE" "$cnow" 
 			IFS=$oldifs
 			return
 		fi
@@ -123,8 +123,8 @@ function airline {
 
 function prompt {
 	typeset laststatus=$?
-	if ! echo $TERM | grep -q 256color; then
-		echo "$(neatpwd)"
+	if ! echo "$TERM" | grep -q 256color; then
+		neatpwd
 		return
 	fi
 
@@ -154,13 +154,13 @@ function prompt {
 	elems[${#elems[*]}]=$(rgb 2 0 2)
 	elems[${#elems[*]}]=" "
 
-	if [ "`uname`" = "OpenBSD" ]; then
+	if [ "$(uname)" = "OpenBSD" ]; then
 		elems[${#elems[*]}]=$(rgb 4 2 0)
 		elems[${#elems[*]}]="$(rtable)"
 		elems[${#elems[*]}]=$(rgb 3 1 0)
 		elems[${#elems[*]}]=" "
 
-		if [ ! -z $flavor ]; then
+		if [ ! -z "$flavor" ]; then
 			elems[${#elems[*]}]=$(rgb 2 2 2)
 			elems[${#elems[*]}]="$flavor"
 			elems[${#elems[*]}]=$(rgb 1 1 1)
@@ -168,7 +168,7 @@ function prompt {
 		fi
 	fi
 
-	if [ ! -z $venv ]; then
+	if [ ! -z "$venv" ]; then
 		elems[${#elems[*]}]=$(rgb 2 2 2)
 		elems[${#elems[*]}]="$venv"
 		elems[${#elems[*]}]=$(rgb 1 1 1)
@@ -194,7 +194,7 @@ function prompt {
 function userchar {
 	typeset chr="#"
 
-	if [ $USER != "root" ]; then
+	if [ "$USER" != "root" ]; then
 		chr="|"
 	fi
 
@@ -203,7 +203,7 @@ function userchar {
 		return
 	fi
 
-	echo "$(color 00 $(rgb 1 1 2) $chr)"
+	color 00 "$(rgb 1 1 2)" "$chr"
 }
 
 PS1='$(prompt)
@@ -211,18 +211,18 @@ $(color 00 $(rgb 1 1 2) "$(userchar)") '
 # }}}
 
 # aliases {{{
-RSYNC_COMMON='rsync -hPr'
+export RSYNC_COMMON='rsync -hPr'
 # alias rm='rm -rf'
-alias cp="$RSYNC_COMMON"
-alias xmv="$RSYNC_COMMON --remove-source-files --delete-delay"
-alias rsync="$RSYNC_COMMON"
+alias cp="\$RSYNC_COMMON"
+alias xmv="\$RSYNC_COMMON --remove-source-files --delete-delay"
+alias rsync="\$RSYNC_COMMON"
 alias ..='cd ..'
 alias ls='ls -F'
 alias sudo='sudo -E'
 alias m=mimehandler
 alias cvs='cvs -q'
 alias ed='rlwrap -pgreen -n -c ed -p">" '
-if [ "`uname`" == "OpenBSD" ]; then
+if [ "$(uname)" == "OpenBSD" ]; then
 	alias top='top -CHSs1'
 	alias sudo=doas
 	alias watch=iwatch
@@ -243,9 +243,10 @@ export HISTCONTROL="ignoredups"
 
 # env vars {{{
 # Rust
-if [[ -e ${HOME}/.cargo/env ]]; then
-	. ${HOME}/.cargo/env
+if [[ -e "${HOME}/.cargo/env" ]]; then
+	. "${HOME}/.cargo/env"
 fi
+
 LUA_PATH="${HOME}/.lua/?.lua;${HOME}/sourcecode/lunajson/src/?.lua;;"
 export LUA_PATH
 
@@ -284,7 +285,7 @@ export AUTOSSH_LOGLEVEL=0
 export MTR_OPTIONS="-zbe"
 
 if which opam 2>/dev/null >/dev/null; then
-	eval `opam config env`
+	eval $(opam config env)
 fi
 
 export LESS='-RIMS -F -X'
@@ -308,9 +309,9 @@ if [ -e ~/perl5 ]; then
 fi
 
 # Fool XDG applications into not creating Downloads/Desktops/Documents folders
-XDG_DOWNLOAD_DIR="${HOME}/downloads"
-XDG_DESKTOP_DIR="${HOME}/.cache/Desktop"
-XDG_DOCUMENTS_DIR="${HOME}"
+export XDG_DOWNLOAD_DIR="${HOME}/downloads"
+export XDG_DESKTOP_DIR="${HOME}/.cache/Desktop"
+export XDG_DOCUMENTS_DIR="${HOME}"
 # }}}
 
 # shell options {{{
