@@ -62,6 +62,10 @@ map k gk
 vnoremap < <gv
 vnoremap > >gv
 
+" Use ]e and [e to jump between errors
+nnoremap ]e :lnext<CR>
+nnoremap [e :lprev<CR>
+
 nnoremap <Leader>c :close<CR>
 nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>w :w<CR>
