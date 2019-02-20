@@ -78,7 +78,7 @@
 	url = https://github.com/lepture/vim-jinja.git
 [submodule "vim/bundle/vim-orgmode"]
 	path = vim/bundle/vim-orgmode
-	url = https://github.com/jceb/vim-orgmode
+	url = https://github.com/farhaven/vim-orgmode
 [submodule "vim/bundle/vim-SyntaxRange"]
 	path = vim/bundle/vim-SyntaxRange
 	url = https://github.com/inkarkat/vim-SyntaxRange
