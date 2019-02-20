@@ -85,3 +85,15 @@
 [submodule "vim/bundle/vim-repeat"]
 	path = vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "vim/bundle/deoplete.nvim"]
+	path = vim/bundle/deoplete.nvim
+	url = https://github.com/Shougo/deoplete.nvim
+[submodule "vim/bundle/gruvbox"]
+	path = vim/bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox
+[submodule "vim/bundle/vim-one"]
+	path = vim/bundle/vim-one
+	url = https://github.com/rakr/vim-one
+[submodule "vim/bundle/icinga2.vim"]
+	path = vim/bundle/icinga2.vim
+	url = git@github.com:crazy-canux/icinga2.vim.git

@@ -53,10 +53,14 @@ set mouse=rn
 set background=light
 set guicursor=a:blinkon0
 " colorscheme old
-colorscheme zellner
+colorscheme one
 
 map j gj
 map k gk
+
+" Keep visual selection during shift, like emacs' evil mode
+vnoremap < <gv
+vnoremap > >gv
 
 nnoremap <Leader>c :close<CR>
 nnoremap <Leader>d :bd<CR>
@@ -170,11 +174,11 @@ let g:tex_flavor='latex'
 
 "" Airline
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 " Simpler position view
 let g:airline_section_z = airline#section#create(['%3p%%'])
-let g:airline_theme = "powerlineish"
+let g:airline_theme = "one"
 
 "" Rainbow
 let g:rbpt_colorpairs = [
@@ -212,6 +216,10 @@ augroup END
 
 "" Syntax highlighting for sh files
 let g:is_kornshell=1
+augroup sh
+	" Embedded AWK scripts enclosed in a Here-Doc started with <<EO_AWK
+	autocmd FileType sh call SyntaxRange#Include('<<?\("\)EO_AWK\1', "^EO_AWK", "awk", "shHereDoc")
+augroup END
 
 "" Django
 augroup django_autocmd
@@ -225,7 +233,7 @@ augroup END
 " Indent body text after headings
 let g:org_indent=0                      " If this is on, adding new items to lists behaves weirdly
 let g:org_heading_shade_leading_stars=0 " Looks confusing if enabled
-let g:org_tag_column=100
+let g:org_tag_column=100                " More space for tags next to headings
 augroup org
 	autocmd FileType org setlocal ts=2
 	autocmd FileType org setlocal sw=2
@@ -233,3 +241,6 @@ augroup org
 
 	autocmd FileType org call SyntaxRange#Include("#+BEGIN_SRC sh", "#+END_SRC", "sh")
 augroup END
+
+"" Deoplete
+let g:deoplete#enable_at_startup=1
