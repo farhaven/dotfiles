@@ -265,6 +265,7 @@ PATH=${PATH}:/Users/gbe/Library/Android/sdk/platform-tools
 PATH=${PATH}:${HOME}/.cargo/bin
 PATH=${PATH}:/usr/local/texlive/2015/bin/universal-darwin
 PATH=${PATH}:/Library/Frameworks/Mono.framework/Commands/
+PATH=${PATH}:~/.local/bin
 export PATH
 
 export LIMPRUNTIME=$HOME/.vim/limp/latest/
@@ -302,7 +303,9 @@ export GPG_TTY=$(tty)
 
 export GUILE_LOAD_PATH="...:${HOME}/.guile"
 
-export GIT_SSL_CAINFO=/etc/ssl/certs.pem
+if [ "$(uname)" == "Darwin" ]; then
+	export GIT_SSL_CAINFO=/etc/ssl/certs.pem
+fi
 
 if [ -e ~/perl5 ]; then
 	eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
@@ -323,7 +326,7 @@ bind ^Y=beginning-of-line
 bind '[1~'=beginning-of-line
 bind '[4~'=end-of-line
 stty -ixon -ixoff ixany
-if [ "`uname`" = "OpenBSD" ]; then
+if [ "$(uname)" = "OpenBSD" ]; then
 	stty status ^T
 fi
 # ulimit -c 0
