@@ -97,3 +97,6 @@
 [submodule "vim/bundle/vim-colorschemes"]
 	path = vim/bundle/vim-colorschemes
 	url = https://github.com/cohlin/vim-colorschemes.git
+[submodule "vim/bundle/vim-ledger"]
+	path = vim/bundle/vim-ledger
+	url = https://github.com/ledger/vim-ledger

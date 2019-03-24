@@ -123,10 +123,6 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread /usr/ports/** setlocal ts=8
 	autocmd bufenter,bufread /usr/ports/** setlocal sw=8
 
-	autocmd bufenter,bufread *.ledger setlocal ts=8
-	autocmd bufenter,bufread *.ledger setlocal sw=2
-	autocmd bufenter,bufread *.ledger setlocal et
-
 	autocmd bufenter,bufread *.rst setlocal ts=4
 	autocmd bufenter,bufread *.rst setlocal sw=4
 	autocmd bufenter,bufread *.rst setlocal et
@@ -251,4 +247,10 @@ augroup YAML
 	autocmd filetype yaml setlocal et
 	autocmd filetype yaml setlocal sw=2
 	autocmd filetype yaml setlocal ts=2
+
+"" Ledger
+augroup ledger
+	autocmd bufenter,bufread *.ledger setlocal ts=8
+	autocmd bufenter,bufread *.ledger setlocal sw=2
+	autocmd bufenter,bufread *.ledger setlocal et
 augroup END
