@@ -53,7 +53,8 @@ set mouse=rn
 set background=light
 set guicursor=a:blinkon0
 " colorscheme old
-colorscheme one
+" colorscheme one
+colorscheme xcode-default
 
 map j gj
 map k gk
@@ -130,10 +131,6 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread *.rst setlocal sw=4
 	autocmd bufenter,bufread *.rst setlocal et
 
-	autocmd filetype yaml setlocal et
-	autocmd filetype yaml setlocal sw=2
-	autocmd filetype yaml setlocal ts=2
-
 	autocmd FileType python setlocal et
 	autocmd FileType python setlocal sw=4
 	autocmd FileType python setlocal ts=4
@@ -172,6 +169,7 @@ let g:netrw_liststyle=3
 """ From here on, only plugin and language specific settings
 "" Neomake
 call neomake#configure#automake('nrwi', 500)
+let g:neomake_python_exe = "python3"
 
 "" Latex
 let g:tex_flavor='latex'
@@ -182,7 +180,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 " Simpler position view
 let g:airline_section_z = airline#section#create(['%3p%%'])
-let g:airline_theme = "one"
+" let g:airline_theme = "one"
+let g:airline_theme = "edocx"
 
 "" Rainbow
 let g:rbpt_colorpairs = [
@@ -244,7 +243,12 @@ augroup org
 	autocmd FileType org setlocal tw=132
 
 	autocmd FileType org call SyntaxRange#Include("#+BEGIN_SRC sh", "#+END_SRC", "sh")
+	autocmd FileType org call SyntaxRange#Include("#+BEGIN_SRC yaml", "#+END_SRC", "ansible")
 augroup END
 
-"" Deoplete
-let g:deoplete#enable_at_startup=1
+"" YAML
+augroup YAML
+	autocmd filetype yaml setlocal et
+	autocmd filetype yaml setlocal sw=2
+	autocmd filetype yaml setlocal ts=2
+augroup END
