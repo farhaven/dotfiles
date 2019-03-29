@@ -53,8 +53,8 @@ set mouse=rn
 set background=light
 set guicursor=a:blinkon0
 " colorscheme old
-" colorscheme one
-colorscheme xcode-default
+colorscheme one
+" colorscheme xcode-default
 
 map j gj
 map k gk
@@ -116,6 +116,7 @@ augroup vimrc_autocmd
 	autocmd bufenter,bufread *.sls setfiletype yaml
 	autocmd bufenter,bufread *SCons* setfiletype python
 	autocmd bufenter,bufread *.asd setfiletype lisp
+	autocmd bufenter,bufread Vagrantfile setfiletype ruby
 
 	autocmd bufenter,bufread /usr/src/** setlocal sw=8
 	autocmd bufenter,bufread /usr/src/** setlocal ts=8
