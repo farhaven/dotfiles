@@ -100,3 +100,6 @@
 [submodule "vim/bundle/vim-ledger"]
 	path = vim/bundle/vim-ledger
 	url = https://github.com/ledger/vim-ledger
+[submodule "vim/bundle/kalahari.vim"]
+	path = vim/bundle/kalahari.vim
+	url = https://github.com/fabi1cazenave/kalahari.vim
