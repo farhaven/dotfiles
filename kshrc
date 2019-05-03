@@ -208,6 +208,12 @@ function userchar {
 
 PS1='$(prompt)
 $(color 00 $(rgb 1 1 2) "$(userchar)") '
+function dpwd {
+	# Lol
+	pwd | sed -e 's,/,\\,g'
+}
+# Powershell style prompt. Just for shits & giggles
+# PS1='PS C:$(dpwd)$(scm_branch)> '
 # }}}
 
 # aliases {{{
