@@ -248,3 +248,9 @@ augroup ledger
 	autocmd bufenter,bufread *.ledger setlocal sw=2
 	autocmd bufenter,bufread *.ledger setlocal et
 augroup END
+
+"" Rust
+augroup Rust
+	autocmd FileType rust call SyntaxRange#Include("#+BEGIN_SRC rust", "#+END_SRC", "rust")
+augroup END
+augroup END
