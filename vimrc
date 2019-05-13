@@ -159,6 +159,9 @@ augroup vimrc_autocmd
 	au FileType qf map <buffer> q :close<CR>
 
 	au FileType help map <buffer> q :close<CR>
+
+	au FileType netrw map <buffer> q :close<CR>
+	au bufenter,bufread NetrwMessage map <buffer> q :close<CR>
 augroup END
 
 let g:netrw_liststyle=3
@@ -200,6 +203,7 @@ let g:rbpt_colorpairs = [
 
 "" Tmuxline
 let g:tmuxline_powerline_separators = 1
+let g:tmuxline_theme = "iceberg"
 
 "" Fugitive
 map <Leader>gs :Gstatus<CR>

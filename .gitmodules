@@ -103,3 +103,6 @@
 [submodule "vim/bundle/kalahari.vim"]
 	path = vim/bundle/kalahari.vim
 	url = https://github.com/fabi1cazenave/kalahari.vim
+[submodule "vim/bundle/vim-beancount"]
+	path = vim/bundle/vim-beancount
+	url = https://github.com/nathangrigg/vim-beancount
