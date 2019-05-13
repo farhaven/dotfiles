@@ -85,21 +85,12 @@
 [submodule "vim/bundle/gruvbox"]
 	path = vim/bundle/gruvbox
 	url = https://github.com/morhetz/gruvbox
-[submodule "vim/bundle/vim-one"]
-	path = vim/bundle/vim-one
-	url = https://github.com/rakr/vim-one
 [submodule "vim/bundle/icinga2.vim"]
 	path = vim/bundle/icinga2.vim
 	url = git@github.com:crazy-canux/icinga2.vim.git
-[submodule "vim/bundle/xterm16.vim"]
-	path = vim/bundle/xterm16.vim
-	url = https://github.com/vim-scripts/xterm16.vim
 [submodule "vim/bundle/vim-colorschemes"]
 	path = vim/bundle/vim-colorschemes
 	url = https://github.com/cohlin/vim-colorschemes.git
-[submodule "vim/bundle/vim-ledger"]
-	path = vim/bundle/vim-ledger
-	url = https://github.com/ledger/vim-ledger
 [submodule "vim/bundle/kalahari.vim"]
 	path = vim/bundle/kalahari.vim
 	url = https://github.com/fabi1cazenave/kalahari.vim
