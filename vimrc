@@ -4,6 +4,7 @@ let mapleader=" "
 let maplocalleader="\\"
 let g:pathogen_disabled = []
 " call add(g:pathogen_disabled, "vim-ondemandhighlight")
+call add(g:pathogen_disabled, "tmuxline.vim")
 execute pathogen#infect()
 
 set nocompatible
@@ -52,9 +53,7 @@ set mouse=rn
 " set background=dark
 set background=light
 set guicursor=a:blinkon0
-" colorscheme old
 colorscheme kalahari
-" colorscheme xcode-default
 
 map j gj
 map k gk
@@ -159,6 +158,9 @@ augroup vimrc_autocmd
 	au FileType qf map <buffer> q :close<CR>
 
 	au FileType help map <buffer> q :close<CR>
+
+	au FileType netrw map <buffer> q :close<CR>
+	au bufenter,bufread NetrwMessage map <buffer> q :close<CR>
 augroup END
 
 let g:netrw_liststyle=3
@@ -200,6 +202,7 @@ let g:rbpt_colorpairs = [
 
 "" Tmuxline
 let g:tmuxline_powerline_separators = 1
+let g:tmuxline_theme = "iceberg"
 
 "" Fugitive
 map <Leader>gs :Gstatus<CR>
@@ -210,15 +213,15 @@ let g:hy_conceal_fancy = 1
 
 "" [ngt]roff
 augroup nroff
-	setlocal tw=0
-	setlocal spelllang=de
+	autocmd FileType nroff setlocal tw=0
+	autocmd FileType nroff setlocal spelllang=de
 augroup END
 
 "" Syntax highlighting for sh files
 let g:is_kornshell=1
 augroup sh
 	" Embedded AWK scripts enclosed in a Here-Doc started with <<EO_AWK
-	autocmd FileType sh call SyntaxRange#Include('<<?\("\)EO_AWK\1', "^EO_AWK", "awk", "shHereDoc")
+	autocmd FileType sh call SyntaxRange#Include('<<\("?\)EO_AWK\1', "^EO_AWK", "awk", "shHereDoc")
 augroup END
 
 "" Django
@@ -248,12 +251,6 @@ augroup YAML
 	autocmd filetype yaml setlocal et
 	autocmd filetype yaml setlocal sw=2
 	autocmd filetype yaml setlocal ts=2
-
-"" Ledger
-augroup ledger
-	autocmd bufenter,bufread *.ledger setlocal ts=8
-	autocmd bufenter,bufread *.ledger setlocal sw=2
-	autocmd bufenter,bufread *.ledger setlocal et
 augroup END
 
 "" Rust
