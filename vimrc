@@ -4,6 +4,7 @@ let mapleader=" "
 let maplocalleader="\\"
 let g:pathogen_disabled = []
 " call add(g:pathogen_disabled, "vim-ondemandhighlight")
+call add(g:pathogen_disabled, "tmuxline.vim")
 execute pathogen#infect()
 
 set nocompatible
