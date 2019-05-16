@@ -213,15 +213,15 @@ let g:hy_conceal_fancy = 1
 
 "" [ngt]roff
 augroup nroff
-	setlocal tw=0
-	setlocal spelllang=de
+	autocmd FileType nroff setlocal tw=0
+	autocmd FileType nroff setlocal spelllang=de
 augroup END
 
 "" Syntax highlighting for sh files
 let g:is_kornshell=1
 augroup sh
 	" Embedded AWK scripts enclosed in a Here-Doc started with <<EO_AWK
-	autocmd FileType sh call SyntaxRange#Include('<<?\("\)EO_AWK\1', "^EO_AWK", "awk", "shHereDoc")
+	autocmd FileType sh call SyntaxRange#Include('<<\("?\)EO_AWK\1', "^EO_AWK", "awk", "shHereDoc")
 augroup END
 
 "" Django
@@ -251,10 +251,4 @@ augroup YAML
 	autocmd filetype yaml setlocal et
 	autocmd filetype yaml setlocal sw=2
 	autocmd filetype yaml setlocal ts=2
-
-"" Ledger
-augroup ledger
-	autocmd bufenter,bufread *.ledger setlocal ts=8
-	autocmd bufenter,bufread *.ledger setlocal sw=2
-	autocmd bufenter,bufread *.ledger setlocal et
 augroup END
