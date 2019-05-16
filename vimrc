@@ -53,9 +53,7 @@ set mouse=rn
 " set background=dark
 set background=light
 set guicursor=a:blinkon0
-" colorscheme old
 colorscheme kalahari
-" colorscheme xcode-default
 
 map j gj
 map k gk
