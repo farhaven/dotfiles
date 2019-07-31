@@ -52,7 +52,7 @@ xsetroot -name "$(status)"
 (while sleep 5; do xsetroot -name "$(status)"; done) &
 
 st -c mutt -e neomutt &
-chrome &
+firefox &
 
 (sleep 5; QSyncthingTray) &
 
@@ -60,9 +60,10 @@ wmname LG3D
 
 while true; do
 	if [ -O /tmp/wm.gbe ]; then
-      # shellcheck disable=SC2091
-      $(cat /tmp/wm.gbe)
+		# shellcheck disable=SC2091
+		$(cat /tmp/wm.gbe)
 	else
-      dwm-gbe
+		dwm-gbe
+		# ctwm
 	fi
 done

@@ -252,3 +252,9 @@ augroup YAML
 	autocmd filetype yaml setlocal sw=2
 	autocmd filetype yaml setlocal ts=2
 augroup END
+
+"" Rust
+augroup Rust
+	autocmd FileType rust call SyntaxRange#Include("#+BEGIN_SRC rust", "#+END_SRC", "rust")
+augroup END
+augroup END
