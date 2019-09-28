@@ -15,6 +15,8 @@ filetype indent on
 syntax on
 set wildmenu
 
+set shortmess-=F
+
 set inccommand=nosplit  " Show preview for search/replace
 set incsearch
 set ignorecase
@@ -53,7 +55,9 @@ set mouse=rn
 " set background=dark
 set background=light
 set guicursor=a:blinkon0
-colorscheme kalahari
+let g:solarized_termcolors=256
+colorscheme one
+" colorscheme kalahari
 
 map j gj
 map k gk
@@ -71,14 +75,11 @@ nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
-nnoremap <F2> :w<cr>:Dispatch<cr>
 nnoremap M :w<cr>:Dispatch make<cr>
 nnoremap <F3> :w !translate -no-ansi<cr>
 vnoremap <F3> :w !translate -no-ansi<cr>
 nnoremap <F4> :!translate -b -no-ansi<cr>
 vnoremap <F4> :!translate -b -no-ansi<cr>
-nnoremap <F5> :cprevious<cr>
-nnoremap <F6> :cnext<cr>
 
 nnoremap gQ {v}!par 72rj
 vnoremap gQ :'<,'>!par 72rj
@@ -99,7 +100,8 @@ nnoremap <F10> :setlocal spell spelllang=en_us<cr>
 nnoremap <F11> :setlocal spell spelllang=<cr>
 
 exec "set listchars=tab:>\u2219,trail:\u2219,nbsp:~"
-set list
+" set list
+set nolist
 
 set completeopt=menuone,menu,longest,preview
 set complete=.,w,b,u,t,i ",kspell
@@ -180,7 +182,7 @@ let g:airline_powerline_fonts = 1
 " Simpler position view
 let g:airline_section_z = airline#section#create(['%3p%%'])
 " let g:airline_theme = "one"
-let g:airline_theme = "edocx"
+let g:airline_theme = "solarized"
 
 "" Rainbow
 let g:rbpt_colorpairs = [
@@ -206,6 +208,18 @@ let g:tmuxline_theme = "iceberg"
 
 "" Fugitive
 map <Leader>gs :Gstatus<CR>
+
+"" Language servers
+let g:lsc_server_commands = {
+			\ "go": {
+			\		"command": "gopls serve",
+			\		"log_level": "-1",
+			\		"suppress_stderr": v:true,
+			\ },
+			\}
+let g:lsc_auto_map = {'defaults': v:true, 'Completion': 'omnifunc'}
+let g:lsc_preview_split_direction = 'below'
+autocmd completeDone * silent! pclose
 
 "" Hy
 let g:hy_enable_conceal = 1
