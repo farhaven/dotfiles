@@ -97,3 +97,6 @@
 [submodule "vim/bundle/vim-beancount"]
 	path = vim/bundle/vim-beancount
 	url = https://github.com/nathangrigg/vim-beancount
+[submodule "vim/bundle/vim-abolish"]
+	path = vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git

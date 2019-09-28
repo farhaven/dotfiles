@@ -110,7 +110,7 @@ set omnifunc=syntaxcomplete#Complete
 augroup vimrc_autocmd
 	autocmd!
 	autocmd bufenter,bufread .pwman.rc setfiletype text
-	autocmd bufenter,bufread *.md setfiletype mkd
+	autocmd bufenter,bufread *.md setfiletype markdown
 	autocmd bufenter,bufread *.groff setfiletype nroff
 	autocmd bufenter,bufread *.ms setfiletype nroff
 	autocmd bufenter,bufread *.json setfiletype javascript
