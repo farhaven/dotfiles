@@ -257,4 +257,3 @@ augroup END
 augroup Rust
 	autocmd FileType rust call SyntaxRange#Include("#+BEGIN_SRC rust", "#+END_SRC", "rust")
 augroup END
-augroup END

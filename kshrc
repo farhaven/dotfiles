@@ -256,7 +256,7 @@ fi
 LUA_PATH="${HOME}/.lua/?.lua;${HOME}/sourcecode/lunajson/src/?.lua;;"
 export LUA_PATH
 
-GOPATH=${HOME}/sourcecode/go
+GOPATH=${HOME}/go
 export GOPATH
 
 PATH=${PATH}:"/Applications/VMware Fusion.app/Contents/Library"

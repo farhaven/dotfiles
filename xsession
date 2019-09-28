@@ -3,20 +3,24 @@
 date
 export ENV=~/.kshrc
 
+# shellcheck disable=SC1090
 [ -e $ENV ] && . $ENV
 
-eval $(gpg-agent -s --daemon --pinentry-program `which pinentry-gtk-2`)
+# shellcheck disable=SC2046
+eval $(gpg-agent -s --daemon --pinentry-program $(which pinentry-gtk-2))
 
 env | grep ^SSH > /tmp/ssh-agent
 
+# shellcheck disable=SC1117
 mount | grep -q "^mfs.*\.cache" || doas mount -t mfs -o -s2G swap ~/.cache
 
 # change the desktop wallpaper every two hours
-while true; do
-	bdselect
-	sleep $((60 * 120))
-done &
+# while true; do
+# 	bdselect
+# 	sleep $((60 * 120))
+# done &
 
+# xcompmgr -c -f -D 4 2>/dev/null &
 compton -b
 xsettingsd &
 for d in /usr/local/share/fonts/mscorefonts /usr/local/lib/X11/fonts/*; do
@@ -44,19 +48,23 @@ xrdb -load ~/.Xdefaults
 setxkbmap us intl-unicode
 xmodmap ~/.xmodmap
 xhost +localhost
-# autocutsel -fork
+autocutsel -fork
 
 xscreensaver &
-dunst -follow keyboard -geometry 0x5-0+16 -fn "PragmataPro for Powerline 10" -nb "#666666" -nf "#ffffff" &
+/usr/local/lib/xfce4/notifyd/xfce4-notifyd &
 xsetroot -name "$(status)"
 (while sleep 5; do xsetroot -name "$(status)"; done) &
 
-st -c mutt -e neomutt &
+xterm -t neomutt -e neomutt &
+xterm -t irrsi -e mosh unobtanium.de &
+xterm -t localhost -e tmux attach &
+
 firefox &
 
-(sleep 5; QSyncthingTray) &
-
 wmname LG3D
+
+# shellcheck disable=SC2039
+xfce4-power-manager &
 
 while true; do
 	if [ -O /tmp/wm.gbe ]; then
@@ -66,4 +74,5 @@ while true; do
 		dwm-gbe
 		# ctwm
 	fi
+	sleep 1
 done
